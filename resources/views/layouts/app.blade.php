@@ -43,6 +43,11 @@
                     <li class="nav-item   ">
                         <a class="nav-link menu_item" href="{{ url('/') }}"><b>Contact</b></a>
                     </li>
+                    @if(auth()->user()->is_admin == 1)
+                    <li class="nav-item   ">
+                        <a class="nav-link menu_item" href="{{ route("admin.home") }}"><b>Admin</b></a>
+                    </li>
+                    @endif
                     <li class="nav-item   ">
                         <a class="nav-link menu_item cursors-pionter" style="cursor: pointer" title="Logout" onclick="document.getElementById('logout').submit()"><b>Logout</b></a>
                     </li>
