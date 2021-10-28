@@ -1,12 +1,31 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\{
+    Contactus
+};
+use App\Http\Livewire\blog\{
+    blog,
+    blogPost,
+};
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/contact-us",App\Http\Livewire\Contactus::class)->name("contactus");
+Route::get("/about-us",function ()
+{
+    return view('aboutus');
+})->name("aboutus");
+
+
+Route::prefix('/blog')->group(function () {
+    Route::get('/', blog::class)->name("blog");
+    Route::get('/post/1', blogPost::class)->name("blog.post");
+});
+
+
+Route::get("/contact-us",Contactus::class)->name("contactus");
 
 Auth::routes();
 

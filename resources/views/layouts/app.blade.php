@@ -43,6 +43,12 @@
                     <li class="nav-item   ">
                         <a class="nav-link menu_item" href="{{ url('/') }}"><b>Contact</b></a>
                     </li>
+                    <li class="nav-item   ">
+                        <a class="nav-link menu_item cursors-pionter" style="cursor: pointer" title="Logout" onclick="document.getElementById('logout').submit()"><b>Logout</b></a>
+                    </li>
+                    <form method="post" id="logout" action="{{ route('logout') }}">
+                        @csrf
+                    </form>
                     <li class="nav-item d-flex align-items-left ">
                         <ul class=" text-light " style="list-style: none;">
                             <li>ISO.No: 1111111111</li>
@@ -53,79 +59,7 @@
             </div>
         </div>
     </nav>
-    <section>
-        <div class="container-fluid bg-dark border-bottom">
-            <div class="row">
-                <div class="col ">
-                    <nav class="nav p-1 d-flex justify-content-between ">
-                        <li class="nav-item bg-primary rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Home
-                            </a>
-                        </li>
-
-                        <li class="nav-item bg-primary rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Why Join</a>
-                        </li>
-
-                        <li class="nav-item bg-primary rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">About Us</a>
-                        </li>
-
-                        <li class="nav-item bg-primary rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Mobile Work Demo</a>
-                        </li>
-
-                        <li class="nav-item bg-primary rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Form Flip Work demo</a>
-                        </li>
-
-                        <li class="nav-item bg-primary rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Ad's posting Demo</a>
-                        </li>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container-fluid bg-dark shadow">
-            <div class="row">
-                <div class="col ">
-                    <nav class="nav p-1 d-flex justify-content-between ">
-                        <li class="nav-item bg-success rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Our Service
-                            </a>
-                        </li>
-
-                        <li class="nav-item bg-success rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">System Work </a>
-                        </li>
-
-                        <li class="nav-item bg-success rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Feedback Video</a>
-                        </li>
-
-                        <li class="nav-item bg-success rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Testimonial</a>
-                        </li>
-
-                        <li class="nav-item bg-success rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Business Plan</a>
-                        </li>
-
-                        <li class="nav-item bg-success rounded my-1 mx-1">
-                            <a class="nav-link text-dark  mx-md-4 mx-sr-auto mx-sr-0  " href="#">Blog</a>
-                        </li>
-
-                        <li class="nav-item bg-success rounded my-1 mx-1">
-                            <a class="nav-link text-dark mx-md-4 mx-sr-auto " href="#">Download</a>
-                        </li>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('layouts.menu')
     @yield("content")
     <!-- Footer-->
     @include("layouts.footer")
