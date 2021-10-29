@@ -12,6 +12,8 @@
     <link href="{{ asset("dist/css/styles.css") }}" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
         crossorigin="anonymous"></script>
+        @livewireStyles
+        @livewireScripts
 </head>
 
 <body class="sb-nav-fixed">
@@ -144,7 +146,7 @@
             </nav>
         </div>
         <div id="layoutSidenav_content">
-            @yield("content")
+            {{ $slot }}
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
