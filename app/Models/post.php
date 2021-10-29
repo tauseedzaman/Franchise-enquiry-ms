@@ -16,7 +16,7 @@ class post extends Model
          *
          * @return \Illuminate\Database\Eloquent\Relations\HasMany
          */
-        public function comments(): HasMany
+        public function comments()
         {
             return $this->hasMany(Comment::class);
         }
@@ -24,18 +24,17 @@ class post extends Model
         /**
          * Get the auther that owns the post
          *
-         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
          */
-        public function auther(): BelongsTo
+        public function auther()
         {
             return $this->belongsTo(User::class);
         }
         /**
          * Get the category that owns the post
          *
-         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+
          */
-        public function category(): BelongsTo
+        public function category()
         {
             return $this->belongsTo(category::class);
         }

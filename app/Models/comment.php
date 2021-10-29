@@ -14,11 +14,18 @@ class comment extends Model
     /**
      * Get the post that owns the comment
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function post(): BelongsTo
+    public function post()
     {
         return $this->belongsTo(post::class);
+    }
+    /**
+     * Get the user that owns the comment
+     *
+     */
+    public function auther()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

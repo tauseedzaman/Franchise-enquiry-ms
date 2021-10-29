@@ -79,8 +79,8 @@
                         <div class="collapse" id="collapsePosts" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Add Post</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">View All Posts</a>
+                            <a class="nav-link" href="{{ route("admin.posts") }}">View Posts</a>
+                            <a class="nav-link" href="{{ route("admin.create_post") }}">Add Post</a>
                         </nav>
                     </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"

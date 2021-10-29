@@ -5,11 +5,10 @@
       </div>
       <div class="p-4 ">
           <ul class="list-group list-unstyled">
-          <li class=" "><a href="#" class="a nav-link m-0 p-0"><strong> 🎓 Category-1</strong></a></li>
-          <li class=" "><a href="#" class="a nav-link m-0 p-0"><strong> 🎓 category-2</strong></a></li>
-          <li class=" "><a href="#" class="a nav-link m-0 p-0"><strong> 🎓 category-3</strong></a></li>
-          <li class=" "><a href="#" class="a nav-link m-0 p-0"><strong> 🎓 category-n</strong></a></li>
-             </ul>
+              @foreach ($categories as $category)
+                  <li class=" "><a href="{{ route("blog.posts.category",$category->id) }}" class="a nav-link m-0 p-0"><strong> 👉 {{ $category->title }}</strong></a></li>
+              @endforeach
+        </ul>
       </div>
     </div>
   </div>
