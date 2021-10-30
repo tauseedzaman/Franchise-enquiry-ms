@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 
 class helperController extends Controller
 {
-    public function FeedbackVideo()
-    {
-        return view("FeedbackVideo");
-    }
 
     public function ourServices()
     {

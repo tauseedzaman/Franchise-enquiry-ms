@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\{
-    Contactus
+    Contactus,
+    FeedbackVideos as ClientFeedbackVideos
 };
 use App\Http\Livewire\blog\{
     blog,
@@ -11,6 +12,7 @@ use App\Http\Livewire\blog\{
 };
 use App\Http\Livewire\admin\{
     categories,
+    FeedbackVideos,
 };
 use App\Http\Controllers\admin\PostsController;
 use App\Http\Controllers\{
@@ -30,7 +32,7 @@ Route::get("/about-us",function ()
     return view('aboutus');
 })->name("aboutus");
 
-Route::get("/Feedback-Video",[helperController::class,"FeedbackVideo"])->name("feedback.video");
+Route::get("/Feedback-Video",ClientFeedbackVideos::class)->name("feedback.video");
 Route::get("/our-services",[helperController::class,"ourServices"])->name("our.services");
 Route::get("/mobile-Work-Demo",[helperController::class,"mobileWorkDemo"])->name("mobile.work.demo");
 Route::get("/testimonial",[helperController::class,"testimonial"])->name("testimonial");
@@ -60,6 +62,7 @@ Route::prefix('admin')->group(function () {
         Route::post('posts/upload_image',[PostsController::class,'uploadImage'])->name('upload');
 
 
+        Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
 
         Route::get('/home',[adminHomeController::class,'index'])->name("admin.home");
     });
