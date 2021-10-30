@@ -17,15 +17,15 @@
                     </li>
 
                     <li class="nav-item bg-primary rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Mobile Work Demo</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("mobile.work.demo") }}">Mobile Work Demo</a>
                     </li>
 
                     <li class="nav-item bg-primary rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Form Flip Work demo</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("form.flip.Work.demo") }}">Form Flip Work demo</a>
                     </li>
 
                     <li class="nav-item bg-primary rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Ad's posting Demo</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("Ad.posting.Demo") }}">Ad's posting Demo</a>
                     </li>
                 </nav>
             </div>
@@ -39,24 +39,24 @@
             <div class="col ">
                 <nav class="nav p-1 d-flex justify-content-between ">
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Our Service
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("our.services") }}">Our Service
                         </a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">System Work </a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("System.Work") }}">System Work </a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Feedback Video</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("feedback.video") }}">Feedback Video</a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Testimonial</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("testimonial") }}">Testimonial</a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Business Plan</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="">Business Plan</a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">

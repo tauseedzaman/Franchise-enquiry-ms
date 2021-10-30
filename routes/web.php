@@ -13,7 +13,10 @@ use App\Http\Livewire\admin\{
     categories,
 };
 use App\Http\Controllers\admin\PostsController;
-
+use App\Http\Controllers\{
+    HomeController,
+    helperController,
+};
 use App\Http\Controllers\admin\homeController as adminHomeController;
 
 
@@ -27,6 +30,13 @@ Route::get("/about-us",function ()
     return view('aboutus');
 })->name("aboutus");
 
+Route::get("/Feedback-Video",[helperController::class,"FeedbackVideo"])->name("feedback.video");
+Route::get("/our-services",[helperController::class,"ourServices"])->name("our.services");
+Route::get("/mobile-Work-Demo",[helperController::class,"mobileWorkDemo"])->name("mobile.work.demo");
+Route::get("/testimonial",[helperController::class,"testimonial"])->name("testimonial");
+Route::get("/Form-Flip-Work-Demo",[helperController::class,"FormFlipWorkDemo"])->name("form.flip.Work.demo");
+Route::get("/Ad-Posting-Demo",[helperController::class,"AdPostingDemo"])->name("Ad.posting.Demo");
+Route::get("/System-Work",[helperController::class,"SystemWork"])->name("System.Work");
 
 Route::prefix('/blog')->group(function () {
     Route::get('/', blog::class)->name("blog");
