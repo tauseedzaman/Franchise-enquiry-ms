@@ -18,6 +18,9 @@ class BlogPost extends Component
 
     public function save_comment()
     {
+        if(!auth()->id()){
+            return redirect()->route("login");
+        }
         $this->validate(['comment' => "required"]);
         comment::create([
             "post_id" => $this->p_id,

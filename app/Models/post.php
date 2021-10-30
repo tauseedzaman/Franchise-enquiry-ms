@@ -25,7 +25,7 @@ class post extends Model
          * Get the auther that owns the post
          *
          */
-        public function auther()
+        public function user()
         {
             return $this->belongsTo(User::class);
         }

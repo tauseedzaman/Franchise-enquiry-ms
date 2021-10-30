@@ -19,11 +19,12 @@ class comment extends Model
     {
         return $this->belongsTo(post::class);
     }
+
     /**
      * Get the user that owns the comment
      *
      */
-    public function auther()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

@@ -5,7 +5,7 @@
         <article class="blog-post">
             <br />
           <h2 class="blog-post-title">{{ $post->title }}</h2>
-          <p class="blog-post-meta">{{ $post->created_at->format("M D, Y")}} by <b>{{ $post->auther }}</b></p>
+          <p class="blog-post-meta">{{ $post->created_at->format("M D, Y")}} by <span class="text-info">{{ $post->user->name }}</span></p>
           {!! $post->content !!}
         </article>
         <nav class="blog-pagination" aria-label="Pagination">
@@ -20,19 +20,17 @@
         <div class="col-12">
         <h1 class="text-center border-bottom bg-success py-2">Comments ({{ $comments->count()}})</h1>
         @foreach ($comments as $comment)
-        <div class="col-12 my-1">
+        <div class="col-12 my-2">
             <div class="card">
                 <div class="card-body p-2 ">
-                    <h5 class="card-title">{{ $comment->auther }}</h5>
-                    <p class="card-text">{{ $comment->content }}</p>
+                    <h5 class="card-title text-info border-bottom">👤 {{ $comment->user->name }}</h5>
+                    <p class="card-text">{{ $comment->content }} <span class="float-right text-success">on {{ $comment->created_at->format("d-M-Y:H-m") }}</span> </p>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
 </div>
-
-    @auth
     <div class="row">
         <div class="col-12">
         <form wire:submit.prevent="save_comment()" class="my-3 mt-5">
@@ -48,12 +46,6 @@
         </form>
     </div>
 </div>
-    @endauth
-@guest
-    <h4>
-        <a href="{{ route("login")}}" >Login To Write Comments</a>
-    </h4>
-@endguest
         </div>
     </div>
   </main>

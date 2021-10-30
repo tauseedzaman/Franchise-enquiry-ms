@@ -13,9 +13,8 @@ class category extends Model
     /**
      * Get all of the posts for the category
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function posts(): HasMany
+    */
+    public function posts()
     {
         return $this->hasMany(post::class);
     }

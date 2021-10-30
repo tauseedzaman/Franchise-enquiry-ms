@@ -6,7 +6,7 @@
       <div class="p-4 ">
           <ul class="list-group list-unstyled">
               @foreach ($categories as $category)
-                  <li class=" "><a href="{{ route("blog.posts.category",$category->id) }}" class="a nav-link m-0 p-0"><strong> 👉 {{ $category->title }}</strong></a></li>
+                  <li class=" "><a href="{{ route("blog.posts.category",$category->id) }}" class="a nav-link m-0 p-0"><strong> 👉 {{ $category->title }} ({{ $category->posts->count() }})</strong></a></li>
               @endforeach
         </ul>
       </div>
