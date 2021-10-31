@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\mobileworkdemo;
 class helperController extends Controller
 {
 
@@ -14,7 +14,9 @@ class helperController extends Controller
 
     public function mobileWorkDemo()
     {
-        return view("mobileWorkDemo");
+        return view("mobileWorkDemo",[
+            "post" => mobileworkdemo::where("status",1)->latest()->first()
+        ]);
     }
 
     public function testimonial()
