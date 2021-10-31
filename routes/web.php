@@ -13,11 +13,16 @@ use App\Http\Livewire\blog\{
 use App\Http\Livewire\admin\{
     categories,
     FeedbackVideos,
+    mobileWork,
 };
-use App\Http\Controllers\admin\PostsController;
+use App\Http\Controllers\admin\{
+    PostsController,
+    mobileWorkController
+};
 use App\Http\Controllers\{
     HomeController,
     helperController,
+
 };
 use App\Http\Controllers\admin\homeController as adminHomeController;
 
@@ -60,6 +65,15 @@ Route::prefix('admin')->group(function () {
         Route::get('posts/edit/{id}',[PostsController::class,'edit'])->name('admin.edit_post');
         Route::post('posts/update/{id}',[PostsController::class,'update'])->name('admin.update_post');
         Route::post('posts/upload_image',[PostsController::class,'uploadImage'])->name('upload');
+
+
+        // admin mobile work demo CRUD
+        Route::get('mobile-work-demo',mobileWork::class)->name('admin.mobile.work');
+        Route::get('create-mobile-work-demo/create',[mobileWorkController::class,'create'])->name('admin.create_mobile_work_demo');
+        Route::post('create-mobile-work-demo/store',[mobileWorkController::class,'store'])->name('store_MobileWorkDemo');
+        Route::get('create-mobile-work-demo/edit/{id}',[mobileWorkController::class,'edit'])->name('admin.edit_mobile_work_demo');
+        Route::post('create-mobile-work-demo/update/{id}',[mobileWorkController::class,'update'])->name('admin.update_mobile_work_demo');
+
 
 
         Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
