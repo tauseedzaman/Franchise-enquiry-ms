@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\mobileworkdemo;
+use App\Models\ourService;
+
 class helperController extends Controller
 {
 
     public function ourServices()
     {
-        return view("ourServices");
+        return view("ourServices",[
+            "post" => ourService::where("status",1)->latest()->first()
+        ]);
     }
 
     public function mobileWorkDemo()
