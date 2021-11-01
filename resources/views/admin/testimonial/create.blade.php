@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('page') Mobile Work Demo @endsection
+@section('page') Manage Testimonials @endsection
 
 @section('content')
 <div class="content">
@@ -22,17 +22,17 @@
                     </div>
                     <div class="row p-5" style="margin: 10px">
                         <div class="col p-5">
-                            <form action="{{ route('store_MobileWorkDemo') }}" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class=" border-2  rounded p-3" >
+                            <form action="{{ route("admin.testimonial.store") }}" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class=" border-2  rounded p-3" >
                             @csrf
-                                <h3 class="text-capitalize text-info p-2  mb-3 text-center text-lg rounded" >{{ __("Add Mobile Work Demo") }}</h3>
+                                <h3 class="text-capitalize text-info p-2  mb-3 text-center text-lg rounded" >{{ __("Add Testimonial") }}</h3>
                             <div class="form-group">
                                 <label for="Title">Title</label>
-                                <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Mobile work demo Title">
+                                <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Testimonial Title">
                                 @error('title') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="form-group mt-3">
-                                <label for="status">Status</label>
+                                <label for="status">Testimonial Status</label>
                                 <select id="status" alue="{{ old('status') }}" class="form-control" name="status">
                                     <option value="1">Active</option>
                                     <option value="0">Not Active</option>
@@ -40,11 +40,11 @@
                                 @error('status') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
                             <div class="alert alert-warning text-sm p-1" role="alert">
-                            Only the latest active Demo will be displayed on <a href="{{ route("mobile.work.demo") }}" target="__blenk">Mobile Work Demo </a> Page
+                            Only the latest active Testimonial will be displayed on <a href="{{ route("testimonial") }}" target="__blenk">Testimonials </a> Page
                             </div>
 
                             <div class="form-group">
-                                <label for="content">Description</label>
+                                <label for="content">Testimonial Description</label>
                                 <textarea name="description" id="" rows="3" cols="80" class="form-control"   placeholder=" Description..">{{ old("description") }}</textarea>
                                 @error('description') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
@@ -55,7 +55,7 @@
                                 @error('content') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
                                 <div class="form-group mt-3">
-                                    <input type="submit" class="btn btn-primary " value="{{ __("Submit") }}">
+                                    <input type="submit" class="btn btn-primary  " value="{{ __("Submit") }}">
                                 </div>
                                 <script>
                                     // CKEDITOR.replace( '' );

@@ -83,18 +83,11 @@
                             <a class="nav-link" href="{{ route("admin.create_post") }}">Add Post</a>
                         </nav>
                     </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseComments" aria-expanded="false" aria-controls="collapseComments">
+                        <a class="nav-link collapsed" href="{{ route("admin.comments") }}"
+                             aria-expanded="false" aria-controls="">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Comments
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseComments" aria-labelledby="headingOne"
-                        data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-sidenav-light.html">Comments</a>
-                        </nav>
-                    </div>
 
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">

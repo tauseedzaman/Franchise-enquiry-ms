@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\mobileworkdemo;
 use App\Models\ourService;
+use App\Models\testimonial;
 
 class helperController extends Controller
 {
@@ -25,7 +26,9 @@ class helperController extends Controller
 
     public function testimonial()
     {
-        return view("testimonials");
+        return view("testimonials",[
+            "post" => testimonial::where("status",1)->latest()->first()
+        ]);
     }
 
     public function FormFlipWorkDemo()

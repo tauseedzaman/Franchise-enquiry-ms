@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('page') Mobile Work Demo @endsection
+@section('page') Edit Testimonial  @endsection
 
 @section('content')
 <div class="content">
@@ -20,45 +20,44 @@
                         @endif
                       </div>
                     </div>
-                    <div class="row p-5" style="margin: 10px">
-                        <div class="col p-5">
-                            <form action="{{ route('store_MobileWorkDemo') }}" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class=" border-2  rounded p-3" >
+                    <div class="row p-2" style="">
+                        <div class="col p-2">
+                            <form action="{{ route('admin.testimonial.update',$post->id    ) }}" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class=" border-2  rounded p-3" >
                             @csrf
-                                <h3 class="text-capitalize text-info p-2  mb-3 text-center text-lg rounded" >{{ __("Add Mobile Work Demo") }}</h3>
+                                <h3 class="text-capitalize text-info p-2  mb-3 text-center text-lg rounded" >{{ __("Edit Testimonial") }}</h3>
+                                <br>
                             <div class="form-group">
                                 <label for="Title">Title</label>
-                                <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Mobile work demo Title">
+                                <input type="text" class="form-control" name="title" value="{{ $post->title }}" placeholder="Testimonial Title">
                                 @error('title') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
-
-                            <div class="form-group mt-3">
-                                <label for="status">Status</label>
-                                <select id="status" alue="{{ old('status') }}" class="form-control" name="status">
-                                    <option value="1">Active</option>
-                                    <option value="0">Not Active</option>
+                            <input type="hidden" name="id" value="{{ $post->id }}" id="">
+                            <br>
+                            <div class="form-group">
+                                <label for="category">Testimonial Status</label>
+                                <select class="form-control" name="status" id="" value="{{ old('status') }}"  >
+                                        <option value="1" @if($post->status == 1) selected @endif>Active</option>
+                                        <option value="0" @if($post->status == 0) selected @endif>Not Active</option>
                                 </select>
                                 @error('status') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
-                            <div class="alert alert-warning text-sm p-1" role="alert">
-                            Only the latest active Demo will be displayed on <a href="{{ route("mobile.work.demo") }}" target="__blenk">Mobile Work Demo </a> Page
-                            </div>
-
+                            <br>
                             <div class="form-group">
-                                <label for="content">Description</label>
-                                <textarea name="description" id="" rows="3" cols="80" class="form-control"   placeholder=" Description..">{{ old("description") }}</textarea>
+                                <label for="description">Testimonial Description</label>
+                                <textarea id="description" class="form-control" value="{{ old('description') }}" name="description" rows="3">{{ $post->description }}</textarea>
                                 @error('description') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
-
-                            <div class="form-group mt-3">
-                                <label for="content">Content</label>
-                                <textarea name="content" id="CKEeditor" rows="10" cols="80" value="{{ old('content') }}" class="form-control"   placeholder="Content...."></textarea>
+                            <br>
+                            <div class="form-group">
+                                <label for="content">Testimonial Content</label>
+                                <textarea name="content" id="CKEeditor" rows="10" cols="80" value="{{ old('content') }}" class="form-control"   placeholder="Post Content">{{ $post->content }}</textarea>
                                 @error('content') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
-                                <div class="form-group mt-3">
+                            <br>
+                                <div class="form-group ">
                                     <input type="submit" class="btn btn-primary " value="{{ __("Submit") }}">
                                 </div>
                                 <script>
-                                    // CKEDITOR.replace( '' );
                                     CKEDITOR.replace('CKEeditor', {
                                         filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
                                         filebrowserUploadMethod: 'form'

@@ -39,14 +39,15 @@
                                     <td>{{ $post->created_at }}</td>
                                     <td class="text-right">
                                         <button class="btn " title="delete this" wire:click.prevent="delete({{ $post->id }})"
-                                            style="background-color:rgb(157, 160, 14);color:rgb(255, 0, 0);border:none;padding:5px 10px;font-size:3rem;border-radius:40px;"><i
-                                                class="pe-7s-trash"></i></button>
+                                            style="background-color:rgb(157, 160, 14);color:rgb(255, 0, 0);border:none;padding:5px 10px;border-radius:40px;"><i
+                                                class="pe-7s-trash">Delete</i></button>
                                         <a href="{{ route('admin.edit_post',$post->id) }}" class="btn "
-                                            style="background-color:chartreuse;color:blue;border:none;padding:5px 10px;font-size:3rem;border-radius:40px;"><i
-                                                class="pe-7s-pen"></i></a>
+                                            style="background-color:chartreuse;color:blue;border:none;padding:5px 10px;border-radius:40px;"><i
+                                                class="pe-7s-pen">Edit</i></a>
                                     </td>
                                 </tr>
                             @empty
+                                <td class="text-warning">{{ __('Null') }}</td>
                                 <td class="text-warning">{{ __('Null') }}</td>
                                 <td class="text-warning">{{ __('Null') }}</td>
                                 <td class="text-warning">{{ __('Null') }}</td>
