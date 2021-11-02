@@ -19,6 +19,7 @@ use App\Http\Livewire\admin\{
     Testimonials,
     fieldWorkDemo,
     AdPostingDemo,
+    SystemWork,
     WhayJoin
 };
 use App\Http\Controllers\admin\{
@@ -27,6 +28,7 @@ use App\Http\Controllers\admin\{
     PostsController,
     mobileWorkController,
     ourServiceController,
+    systemWorkController,
     testimonialsController,
     whayJoinController
 };
@@ -138,6 +140,17 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{id}',[whayJoinController::class,'edit'])->name('admin.whayJoin.edit');
             Route::post('/update/{id}',[whayJoinController::class,'update'])->name('admin.whayJoin.update');
         });
+
+
+         // admin system work CRUD
+         Route::prefix('system-work')->group(function () {
+            Route::get('/',SystemWork::class)->name('admin.systemWork');
+            Route::get('/create',[systemWorkController::class,'create'])->name('admin.systemWork.create');
+            Route::post('/store',[systemWorkController::class,'store'])->name('admin.systemWork.store');
+            Route::get('/edit/{id}',[systemWorkController::class,'edit'])->name('admin.systemWork.edit');
+            Route::post('/update/{id}',[systemWorkController::class,'update'])->name('admin.systemWork.update');
+        });
+
 
 
 

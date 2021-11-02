@@ -7,6 +7,7 @@ use App\Models\fieldWorkDemo;
 use Illuminate\Http\Request;
 use App\Models\mobileworkdemo;
 use App\Models\ourService;
+use App\Models\systemWork;
 use App\Models\testimonial;
 use App\Models\whayJoin;
 
@@ -56,13 +57,11 @@ class helperController extends Controller
         ]);
     }
 
-
-
-
-
     public function SystemWork()
     {
-        return view("SystemWork");
+        return view("SystemWork",[
+            "post" => systemWork::where("status",1)->latest()->first()
+        ]);
     }
 
 

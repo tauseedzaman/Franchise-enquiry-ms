@@ -7,6 +7,6 @@
       <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
     </ul>
-    <p class="text-center text-info">&copy; <script> document.write(new Date().getFullYear()) </script> {{ config("app.name") }} </p>
+    <p class="text-center text-info">&copy; <script> document.write(new Date().getFullYear()) </script> {{ config("app.name ") }} </p>
   </footer>
 </div>
