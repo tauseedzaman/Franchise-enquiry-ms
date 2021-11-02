@@ -17,9 +17,11 @@ use App\Http\Livewire\admin\{
     mobileWork,
     OurService,
     Testimonials,
-    fieldWorkDemo
+    fieldWorkDemo,
+    AdPostingDemo
 };
 use App\Http\Controllers\admin\{
+    AdPostingDemoController,
     fieldWorkDemoController,
     PostsController,
     mobileWorkController,
@@ -47,8 +49,8 @@ Route::get("/contact-us",Contactus::class)->name("contactus");
 Route::get("/Feedback-Video",ClientFeedbackVideos::class)->name("feedback.video"); //✅
 Route::get("/mobile-Work-Demo",[helperController::class,"mobileWorkDemo"])->name("mobile.work.demo"); //✅
 Route::get("/our-services",[helperController::class,"ourServices"])->name("our.services"); //✅
-Route::get("/testimonial",[helperController::class,"testimonial"])->name("testimonial");
-Route::get("/field-Work-Demo",[helperController::class,"FormFlipWorkDemo"])->name("form.field.Work.demo");
+Route::get("/testimonial",[helperController::class,"testimonial"])->name("testimonial");//✅
+Route::get("/field-Work-Demo",[helperController::class,"FormFlipWorkDemo"])->name("form.field.Work.demo"); //✅
 Route::get("/Ad-Posting-Demo",[helperController::class,"AdPostingDemo"])->name("Ad.posting.Demo");
 Route::get("/System-Work",[helperController::class,"SystemWork"])->name("System.Work");
 
@@ -114,7 +116,14 @@ Route::prefix('admin')->group(function () {
             Route::post('/update/{id}',[testimonialsController::class,'update'])->name('admin.testimonial.update');
         });
 
-
+         // admin adds posting demo CRUD
+         Route::prefix('Ad-Posting-Demo')->group(function () {
+            Route::get('/',AdPostingDemo::class)->name('admin.AdPostingDemo');
+            Route::get('/create',[AdPostingDemoController::class,'create'])->name('admin.AdPostingDemo.create');
+            Route::post('/store',[AdPostingDemoController::class,'store'])->name('admin.AdPostingDemo.store');
+            Route::get('/edit/{id}',[AdPostingDemoController::class,'edit'])->name('admin.AdPostingDemo.edit');
+            Route::post('/update/{id}',[AdPostingDemoController::class,'update'])->name('admin.AdPostingDemo.update');
+        });
 
         Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
         Route::get('/home',[adminHomeController::class,'index'])->name("admin.home");

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdPostingDemo;
 use App\Models\fieldWorkDemo;
 use Illuminate\Http\Request;
 use App\Models\mobileworkdemo;
@@ -42,7 +43,9 @@ class helperController extends Controller
 
     public function AdPostingDemo()
     {
-        return view("AdPostingDemo");
+        return view("AdPostingDemo",[
+            "post" => AdPostingDemo::where("status",1)->latest()->first()
+        ]);
     }
 
 
