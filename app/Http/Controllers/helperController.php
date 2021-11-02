@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\fieldWorkDemo;
 use Illuminate\Http\Request;
 use App\Models\mobileworkdemo;
 use App\Models\ourService;
@@ -33,7 +34,9 @@ class helperController extends Controller
 
     public function FormFlipWorkDemo()
     {
-        return view("FormFlipWorkDemo");
+        return view("FormFieldWorkDemo",[
+            "post" => fieldWorkDemo::where("status",1)->latest()->first()
+        ]);
     }
 
 

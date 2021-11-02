@@ -17,8 +17,10 @@ use App\Http\Livewire\admin\{
     mobileWork,
     OurService,
     Testimonials,
+    fieldWorkDemo
 };
 use App\Http\Controllers\admin\{
+    fieldWorkDemoController,
     PostsController,
     mobileWorkController,
     ourServiceController,
@@ -46,7 +48,7 @@ Route::get("/Feedback-Video",ClientFeedbackVideos::class)->name("feedback.video"
 Route::get("/mobile-Work-Demo",[helperController::class,"mobileWorkDemo"])->name("mobile.work.demo"); //✅
 Route::get("/our-services",[helperController::class,"ourServices"])->name("our.services"); //✅
 Route::get("/testimonial",[helperController::class,"testimonial"])->name("testimonial");
-Route::get("/Form-Flip-Work-Demo",[helperController::class,"FormFlipWorkDemo"])->name("form.flip.Work.demo");
+Route::get("/field-Work-Demo",[helperController::class,"FormFlipWorkDemo"])->name("form.field.Work.demo");
 Route::get("/Ad-Posting-Demo",[helperController::class,"AdPostingDemo"])->name("Ad.posting.Demo");
 Route::get("/System-Work",[helperController::class,"SystemWork"])->name("System.Work");
 
@@ -91,6 +93,15 @@ Route::prefix('admin')->group(function () {
             Route::post('/store',[ourServiceController::class,'store'])->name('admin.our.service.store');
             Route::get('/edit/{id}',[ourServiceController::class,'edit'])->name('admin.our.service.edit');
             Route::post('/update/{id}',[ourServiceController::class,'update'])->name('admin.our.service.update');
+        });
+
+         // admin field demo work CRUD
+         Route::prefix('field-work-demo')->group(function () {
+            Route::get('/',fieldWorkDemo::class)->name('admin.field.work.demo');
+            Route::get('/create',[fieldWorkDemoController::class,'create'])->name('admin.field.work.demo.create');
+            Route::post('/store',[fieldWorkDemoController::class,'store'])->name('admin.field.work.demo.store');
+            Route::get('/edit/{id}',[fieldWorkDemoController::class,'edit'])->name('admin.field.work.demo.edit');
+            Route::post('/update/{id}',[fieldWorkDemoController::class,'update'])->name('admin.field.work.demo.update');
         });
 
 
