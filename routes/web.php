@@ -38,6 +38,7 @@ use App\Http\Controllers\{
 
 };
 use App\Http\Controllers\admin\homeController as adminHomeController;
+use App\Http\Controllers\user\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,9 +59,9 @@ Route::get("/testimonial",[helperController::class,"testimonial"])->name("testim
 Route::get("/field-Work-Demo",[helperController::class,"FormFlipWorkDemo"])->name("form.field.Work.demo"); //✅
 Route::get("/Ad-Posting-Demo",[helperController::class,"AdPostingDemo"])->name("Ad.posting.Demo"); //✅
 Route::get("/Whay-join",[helperController::class,"whayJoin"])->name("whay-join"); //✅
-
 Route::get("/System-Work",[helperController::class,"SystemWork"])->name("System.Work");
 
+Route::get("user/profile",[ProfileController::class,"index"])->name("user.profile");
 
 Route::prefix('/blog')->group(function () {
     Route::get('/', blog::class)->name("blog");

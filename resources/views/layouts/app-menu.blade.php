@@ -23,7 +23,7 @@
                     </li>
 
                     <li class="nav-item bg-primary rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">My Profile</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("user.profile") }}">My Profile</a>
                     </li>
 
                     <li class="nav-item bg-primary rounded my-1 mx-1">

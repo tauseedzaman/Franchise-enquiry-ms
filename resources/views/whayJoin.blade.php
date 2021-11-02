@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('content')
 <div class="container">
@@ -6,7 +6,7 @@
         <div class="col-12">
             <h1 class="text-center text-success my-3 border-bottom">Why Join Us</h1>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-10">
             {!! $post->content !!}
         </div>
     </div>
