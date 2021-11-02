@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\mobileworkdemo;
 use App\Models\ourService;
 use App\Models\testimonial;
+use App\Models\whayJoin;
 
 class helperController extends Controller
 {
@@ -47,6 +48,16 @@ class helperController extends Controller
             "post" => AdPostingDemo::where("status",1)->latest()->first()
         ]);
     }
+
+    public function whayJoin()
+    {
+        return view("whayJoin",[
+            "post" => whayJoin::where("status",1)->latest()->first()
+        ]);
+    }
+
+
+
 
 
     public function SystemWork()

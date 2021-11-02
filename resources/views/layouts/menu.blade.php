@@ -9,7 +9,7 @@
                     </li>
 
                     <li class="nav-item bg-primary rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Why Join</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("whay-join") }}">Whay Join</a>
                     </li>
 
                     <li class="nav-item bg-primary rounded my-1 mx-1">

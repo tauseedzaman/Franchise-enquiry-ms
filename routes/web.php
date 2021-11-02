@@ -18,7 +18,8 @@ use App\Http\Livewire\admin\{
     OurService,
     Testimonials,
     fieldWorkDemo,
-    AdPostingDemo
+    AdPostingDemo,
+    WhayJoin
 };
 use App\Http\Controllers\admin\{
     AdPostingDemoController,
@@ -26,7 +27,8 @@ use App\Http\Controllers\admin\{
     PostsController,
     mobileWorkController,
     ourServiceController,
-    testimonialsController
+    testimonialsController,
+    whayJoinController
 };
 use App\Http\Controllers\{
     HomeController,
@@ -42,6 +44,7 @@ Route::get('/', function () {
 Route::get("/about-us",function ()
 {
     return view('aboutus');
+
 })->name("aboutus");
 
 Route::get("/contact-us",Contactus::class)->name("contactus");
@@ -51,7 +54,9 @@ Route::get("/mobile-Work-Demo",[helperController::class,"mobileWorkDemo"])->name
 Route::get("/our-services",[helperController::class,"ourServices"])->name("our.services"); //✅
 Route::get("/testimonial",[helperController::class,"testimonial"])->name("testimonial");//✅
 Route::get("/field-Work-Demo",[helperController::class,"FormFlipWorkDemo"])->name("form.field.Work.demo"); //✅
-Route::get("/Ad-Posting-Demo",[helperController::class,"AdPostingDemo"])->name("Ad.posting.Demo");
+Route::get("/Ad-Posting-Demo",[helperController::class,"AdPostingDemo"])->name("Ad.posting.Demo"); //✅
+Route::get("/Whay-join",[helperController::class,"whayJoin"])->name("whay-join"); //✅
+
 Route::get("/System-Work",[helperController::class,"SystemWork"])->name("System.Work");
 
 
@@ -124,6 +129,17 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{id}',[AdPostingDemoController::class,'edit'])->name('admin.AdPostingDemo.edit');
             Route::post('/update/{id}',[AdPostingDemoController::class,'update'])->name('admin.AdPostingDemo.update');
         });
+
+        // admin whay join us CRUD
+        Route::prefix('whay-join')->group(function () {
+            Route::get('/',WhayJoin::class)->name('admin.whayJoin');
+            Route::get('/create',[whayJoinController::class,'create'])->name('admin.whayJoin.create');
+            Route::post('/store',[whayJoinController::class,'store'])->name('admin.whayJoin.store');
+            Route::get('/edit/{id}',[whayJoinController::class,'edit'])->name('admin.whayJoin.edit');
+            Route::post('/update/{id}',[whayJoinController::class,'update'])->name('admin.whayJoin.update');
+        });
+
+
 
         Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
         Route::get('/home',[adminHomeController::class,'index'])->name("admin.home");
