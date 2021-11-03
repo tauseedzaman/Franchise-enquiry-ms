@@ -16,7 +16,7 @@ class systemWorkController extends Controller
      */
     public function create()
     {
-        return view('admin.systemWork.create');
+        return view('admin.adPosting.demo.create');
     }
 
     /**

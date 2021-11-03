@@ -41,11 +41,11 @@
             <div class="col ">
                 <nav class="nav p-1 d-flex justify-content-between ">
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("System.Work") }}">My Work Sheet </a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("auth.myWorkSheet") }}">My Work Sheet </a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("feedback.video") }}">Submit URL</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("auth.submitUrl") }}">Submit URL</a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">

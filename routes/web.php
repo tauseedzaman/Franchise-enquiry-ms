@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\{
     Contactus,
-    FeedbackVideos as ClientFeedbackVideos
+    FeedbackVideos as ClientFeedbackVideos,
+    MyWorkSheet,
+    SubmitUrl
 };
 use App\Http\Livewire\blog\{
     blog,
@@ -160,9 +162,12 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/submit-Url', SubmitUrl::class)->name('auth.submitUrl');
+    Route::get('/My-Work-Sheet', MyWorkSheet::class)->name('auth.myWorkSheet');
+});
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
