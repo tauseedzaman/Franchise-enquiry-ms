@@ -21,7 +21,7 @@ class postsController extends Controller
      */
     public function index()
     {
-        $data = posts::all();
+        $data = post::all();
         return view('admin.posts.posts',['posts' =>$data]);
     }
 

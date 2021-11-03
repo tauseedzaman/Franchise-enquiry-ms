@@ -89,6 +89,30 @@
                             Comments
                         </a>
 
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                        data-bs-target="#collapseDemos" aria-expanded="false" aria-controls="collapseDemos">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Manage Front Pages
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseDemos" aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route("admin.whayJoin") }}">Why Join</a>
+                        {{-- <a class="nav-link" href="{{ route("admin.ab") }}">About Us</a> --}}
+                        <a class="nav-link" href="{{ route("admin.mobile.work") }}">Mobile Work Demo</a>
+                        <a class="nav-link" href="{{ route("admin.field.work.demo") }}">Flield Work demo</a>
+                        <a class="nav-link" href="{{ route("admin.AdPostingDemo") }}">Ad's posting Demo</a>
+                        <a class="nav-link" href="{{ route("admin.our.service") }}">Our Service</a>
+                        <a class="nav-link" href="{{ route("admin.systemWork") }}">System Work</a>
+                        <a class="nav-link" href="{{ route("admin.feedback.video") }}">Feedback Video</a>
+                        <a class="nav-link" href="{{ route("admin.Business-Plan") }}">Business Plan</a>
+                        <a class="nav-link" href="{{ route("aboutus") }}">Download</a>
+                    </a>
+                        <a class="nav-link" href="{{ route("admin.create_post") }}">Add Post</a>
+                    </nav>
+                </div>
+
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

@@ -64,6 +64,13 @@ class helperController extends Controller
         ]);
     }
 
+    public function BusinessPlans()
+    {
+        return view("BusinessPlans",[
+            // "post" => systemWork::where("status",1)->latest()->first()
+        ]);
+    }
+
 
 
 }
