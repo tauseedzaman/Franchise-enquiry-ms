@@ -167,7 +167,7 @@ Route::prefix('admin')->group(function () {
         Route::get('Downloads',Downloads::class)->name("admin.downloads");
 
         Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
-        Route::get('/home',[adminHomeController::class,'index'])->name("admin.home");
+        Route::get('/',[adminHomeController::class,'index'])->name("admin.home");
     });
 });
 
