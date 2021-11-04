@@ -56,7 +56,7 @@
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="">Business Plan</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("BusinessPlans") }}">Business Plan</a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">

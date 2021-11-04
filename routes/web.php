@@ -64,6 +64,7 @@ Route::get("/Ad-Posting-Demo",[helperController::class,"AdPostingDemo"])->name("
 Route::get("/Whay-join",[helperController::class,"whayJoin"])->name("whay-join"); //✅
 Route::get("/System-Work",[helperController::class,"SystemWork"])->name("System.Work");
 Route::get("/Business-Plan",[helperController::class,"BusinessPlans"])->name("BusinessPlans");
+Route::get("/Downloads",[helperController::class,"Downloads"])->name("Downloads");
 
 Route::get("user/profile",[ProfileController::class,"index"])->name("user.profile");
 
@@ -159,10 +160,6 @@ Route::prefix('admin')->group(function () {
         // admin Business Plan CRUD
         Route::prefix('Business-Plan')->group(function () {
             Route::get('/',BusinessPlan::class)->name('admin.Business-Plan');
-            // Route::get('/create',[systemWorkController::class,'create'])->name('admin.systemWork.create');
-            // Route::post('/store',[systemWorkController::class,'store'])->name('admin.systemWork.store');
-            // Route::get('/edit/{id}',[systemWorkController::class,'edit'])->name('admin.systemWork.edit');
-            // Route::post('/update/{id}',[systemWorkController::class,'update'])->name('admin.systemWork.update');
         });
 
 

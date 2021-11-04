@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdPostingDemo;
+use App\Models\businessPlan;
 use App\Models\fieldWorkDemo;
 use Illuminate\Http\Request;
 use App\Models\mobileworkdemo;
@@ -67,9 +68,17 @@ class helperController extends Controller
     public function BusinessPlans()
     {
         return view("BusinessPlans",[
-            // "post" => systemWork::where("status",1)->latest()->first()
+            "posts" => businessPlan::latest()->get()
         ]);
     }
+
+    public function Downloads()
+    {
+        return view("downloads",[
+            // "posts" => download::latest()->get()
+        ]);
+    }
+
 
 
 
