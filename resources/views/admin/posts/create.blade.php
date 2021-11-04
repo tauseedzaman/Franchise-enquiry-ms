@@ -25,12 +25,14 @@
                             <form action="{{ route('store_post') }}" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class=" border-2  rounded p-3" >
                             @csrf
                                 <h3 class="text-capitalize text-info p-2  mb-3 text-center text-lg rounded" >{{ __("Add post") }}</h3>
-                            <div class="form-group">
+                                <br>
+                                <div class="form-group">
                                 <label for="Title">Title</label>
                                 <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Post Title">
                                 @error('title') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
 
+                            <br>
 
                             <div class="form-group" >
                                 <label class="form-control-label">Post Image</label>
@@ -39,7 +41,7 @@
                                 <br>
                               <br>
                             </div>
-
+                            <br>
                             <div class="form-group">
                                 <label for="category">Category</label>
                                 <select class="form-control" name="category" id="" value="{{ old('category') }}"  >
@@ -51,12 +53,14 @@
                                 </select>
                                 @error('category') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
+                            <br>
 
                             <div class="form-group">
                                 <label for="content">Post Description</label>
                                 <textarea name="description" id="" rows="3" cols="80" class="form-control"   placeholder="Post Description">{{ old("description") }}</textarea>
                                 @error('description') <span class="text-red-500 text-danger text-xs">{{ $message }}</span> @enderror
                             </div>
+                            <br>
 
                             <div class="form-group">
                                 <label for="content">Post Content</label>

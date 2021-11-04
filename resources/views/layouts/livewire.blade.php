@@ -55,7 +55,7 @@
             </div>
         </div>
     </nav>
-    @include("layouts.app-menu")
+    @include("layouts.menu")
     {{ $slot }}
     <!-- Footer-->
     @include("layouts.footer")

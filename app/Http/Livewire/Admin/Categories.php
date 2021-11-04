@@ -10,6 +10,7 @@ class Categories extends Component
     public $title;
     public $description;
     public $edit_category_id;
+    public $show_data = true;
 
     public $btn_text = "Create Category";
 
@@ -32,7 +33,13 @@ class Categories extends Component
         session()->flash('message', 'Category Created Successfully.');
         unset($this->title);
         unset($this->description);
+        $this->show_data = true;
         }
+    }
+
+    public function show_from()
+    {
+            $this->show_data = false;
     }
 
     public function update($id)
@@ -49,6 +56,8 @@ class Categories extends Component
         unset($this->title);
         unset($this->description);
         unset($this->edit_category_id);
+        $this->show_data = true;
+
 
         session()->flash('message', 'Category Updated Successfully.');
 
@@ -63,7 +72,7 @@ class Categories extends Component
         $this->edit_category_id = $id;
         $this->title = $category->title;
         $this->description = $category->description;
-
+        $this->show_data = false;
         $this->btn_text="Update Category";
     }
 

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col mx-auto my-3 p-2 border-bottom">
-            <h1 class="text-center text-success">{{ config("app.name") }} Feedbacks from Users </h1>
+            <h1 class="text-center text-success">Users Feedbacks </h1>
         </div>
     </div>
     @foreach ($feedbacks as $feedback)

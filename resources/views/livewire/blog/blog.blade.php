@@ -3,19 +3,20 @@
     <div class="row">
 
         <div class="col-md-8">
+          @if ($posts->first())
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-              <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-success">{{ $posts->first()->category->title }}</strong>
-                <h3 class="mb-0">{{ $posts->first()->title }}</h3>
-                <div class="mb-1 text-muted">{{ $posts->first()->created_at->format("M-d-Y") }}</div>
-                <p class="mb-auto">{{ $posts->first()->description }}</p>
-                <a href="{{ route("blog.post",$posts->first()->id) }}" class="stretched-link">Continue reading</a>
-              </div>
-              <div class="col-auto d-lg-block">
-                <img class="bd-placeholder-img" width="200" height="250" role="img" aria-label="Placeholder: Thumbnail" src="storage/{{ $posts->first()->image }}" alt="">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success">{{ ($posts->first() ? ($posts->first()->category ? $posts->first()->category->title:"") : "") }}</strong>
+              <h3 class="mb-0">{{ $posts->first() ? $posts->first()->title : "" }}</h3>
+              <div class="mb-1 text-muted">{{ $posts->first() ? $posts->first()->created_at->format("M-d-Y"):"" }}</div>
+              <p class="mb-auto">{{ $posts->first() ? $posts->first()->description:"" }}</p>
+              <a href="{{ route("blog.post",$posts->first() ? $posts->first()->id:"0") }}" class="stretched-link">Continue reading</a>
             </div>
-            </div>
-
+            <div class="col-auto d-lg-block">
+              <img class="bd-placeholder-img" width="200" height="250" role="img" aria-label="Placeholder: Thumbnail" src="storage/{{ $posts->first() ? $posts->first()->image:"" }}" alt="">
+          </div>
+          </div>
+          @endif
         </div>
 
       @livewire("blog.category")

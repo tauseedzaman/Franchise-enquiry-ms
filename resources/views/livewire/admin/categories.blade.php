@@ -10,6 +10,8 @@
                     </div>
                     @endif
                 </div>
+                <button class="btn btn-warning" type="button" wire:click="show_from">Add Category</button>
+                @if (!$show_data)
                 <div class="card shadow-lg border-0 rounded-lg mt-2">
                     <div class="card-header"><h3 class="text-center font-weight-light my-2 text-secondary">{{ $btn_text }}</h3></div>
                     <div class="card-body">
@@ -34,10 +36,12 @@
                         </form>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
         <div class="row my-3">
         </div>
+        @if ($show_data)
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -87,5 +91,6 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 </main>
