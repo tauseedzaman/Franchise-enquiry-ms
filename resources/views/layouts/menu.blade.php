@@ -64,7 +64,7 @@
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto " href="#">Download</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto " href="{{ route("Downloads") }}">Download</a>
                     </li>
                 </nav>
             </div>

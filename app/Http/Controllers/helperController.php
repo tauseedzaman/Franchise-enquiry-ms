@@ -10,6 +10,7 @@ use App\Models\mobileworkdemo;
 use App\Models\ourService;
 use App\Models\systemWork;
 use App\Models\testimonial;
+use App\Models\uploads;
 use App\Models\whayJoin;
 
 class helperController extends Controller
@@ -68,14 +69,14 @@ class helperController extends Controller
     public function BusinessPlans()
     {
         return view("BusinessPlans",[
-            "posts" => businessPlan::latest()->get()
+            "posts" => uploads::where("page","BusinessPlan")->latest()->get()
         ]);
     }
 
     public function Downloads()
     {
         return view("downloads",[
-            // "posts" => download::latest()->get()
+            "posts" => uploads::where("page","downloads")->latest()->get()
         ]);
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBusinessPlansTable extends Migration
+class CreateUploadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateBusinessPlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_plans', function (Blueprint $table) {
+        Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->string("description");
+            $table->text("description");
+            $table->string("page");
             $table->string('file');
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ class CreateBusinessPlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_plans');
+        Schema::dropIfExists('uploads');
     }
 }

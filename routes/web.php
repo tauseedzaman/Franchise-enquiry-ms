@@ -22,6 +22,7 @@ use App\Http\Livewire\admin\{
     fieldWorkDemo,
     AdPostingDemo,
     BusinessPlan,
+    Downloads,
     SystemWork,
     WhayJoin
 };
@@ -162,6 +163,8 @@ Route::prefix('admin')->group(function () {
             Route::get('/',BusinessPlan::class)->name('admin.Business-Plan');
         });
 
+        // admin downloads crud
+        Route::get('Downloads',Downloads::class)->name("admin.downloads");
 
         Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
         Route::get('/home',[adminHomeController::class,'index'])->name("admin.home");

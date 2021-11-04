@@ -6,9 +6,7 @@ use App\Models\uploads;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
-use PHPUnit\Framework\Constraint\FileExists;
-
-class BusinessPlan extends Component
+class Downloads extends Component
 {
     use WithFileUploads;
     use WithPagination;
@@ -34,13 +32,13 @@ class BusinessPlan extends Component
             $this->validate([
                 'title' => "required",
                 "description" => "required|string",
-                "file" => "required|mimes:pdf,csv,xlsx,doc"
+                "file" => "required|file"
             ]);
             uploads::create([
                 'title' => $this->title,
                 "description" => $this->description,
-                "file" => $this->file->store("businessPlan","public"),
-                "page" => "BusinessPlan"
+                "file" => $this->file->store("Downloads","public"),
+                "page" => "downloads"
             ]);
         session()->flash('message', 'Created Successfully.');
 
@@ -98,11 +96,10 @@ class BusinessPlan extends Component
         $record->delete();
         session()->flash('message', 'Deleted Successfully.');
     }
-
     public function render()
     {
-        return view('livewire.admin.business-plan',[
-            "posts" => uploads::where("page","businessPlan")->latest()->paginate(20)
+        return view('livewire.admin.downloads',[
+            "posts" => uploads::where("page","downloads")->latest()->paginate(20)
         ])->layout("admin.layouts.livewire");
     }
 }
