@@ -6,7 +6,8 @@
         <div class="col-md-8">
             <h1 class="text-center text-success my-3 border-bottom">Testimonial</h1>        </div>
         <div class="col-md-8">
-            {!! $post->content !!}
+            {!! $post ? $post->content:"<h1 class='text-danger text-center'>No Content Found!</h1>" !!}
+
         </div>
     </div>
 </div>
