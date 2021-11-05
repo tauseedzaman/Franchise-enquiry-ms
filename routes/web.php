@@ -22,6 +22,7 @@ use App\Http\Livewire\admin\{
     fieldWorkDemo,
     AdPostingDemo,
     BusinessPlan,
+    ClassifiedSite,
     Downloads,
     SystemWork,
     WhayJoin
@@ -44,9 +45,7 @@ use App\Http\Controllers\{
 use App\Http\Controllers\admin\homeController as adminHomeController;
 use App\Http\Controllers\user\ProfileController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[helperController::class,"welcome"])->name("welcome");
 
 Route::get("/about-us",function ()
 {
@@ -166,17 +165,44 @@ Route::prefix('admin')->group(function () {
         // admin downloads crud
         Route::get('Downloads',Downloads::class)->name("admin.downloads");
 
+        // admin classified site management
+        Route::get('Classified-Site',ClassifiedSite::class)->name("admin.classifiedSite");
+
         Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
         Route::get('/',[adminHomeController::class,'index'])->name("admin.home");
+
+
     });
 });
 
+
+Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/submit-Url', SubmitUrl::class)->name('auth.submitUrl');
     Route::get('/My-Work-Sheet', MyWorkSheet::class)->name('auth.myWorkSheet');
+    Route::get('/Classified-Sites', [helperController::class,"classifiedSite"])->name('auth.classifiedSites');
 });
-Auth::routes();
 
 
 
+
+/*
+employee
+ID Activation /User Verification
+
+Submit URL Approved
+
+Payment Approved
+
+Support Trick Relpy
+
+Create Franchise
+
+Pakage add
+
+create my work mattor
+
+classified website add
+
+*/

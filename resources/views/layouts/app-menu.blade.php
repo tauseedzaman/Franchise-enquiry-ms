@@ -8,7 +8,7 @@
                         </a>
                     </li>
                     <li class="nav-item bg-primary rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Classified site</a>
+                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="{{ route("auth.classifiedSites") }}">Classified site</a>
                     </li>
                     <li class="nav-item bg-primary rounded my-1 mx-1">
                         <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="#">Mobile Work</a>

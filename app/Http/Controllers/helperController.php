@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AdPostingDemo;
 use App\Models\businessPlan;
+use App\Models\classifiedSite;
 use App\Models\fieldWorkDemo;
 use Illuminate\Http\Request;
 use App\Models\mobileworkdemo;
@@ -12,9 +13,18 @@ use App\Models\systemWork;
 use App\Models\testimonial;
 use App\Models\uploads;
 use App\Models\whayJoin;
+use Illuminate\Support\Facades\Redirect;
 
 class helperController extends Controller
 {
+
+    public function welcome()
+    {
+        if(auth()->user()){
+            return Redirect()->route("home");
+        }
+        return view('welcome');
+    }
 
     public function ourServices()
     {
@@ -80,7 +90,12 @@ class helperController extends Controller
         ]);
     }
 
-
+    public function classifiedSite()
+    {
+        return view("classifiedSites",[
+            "sites" => classifiedSite::latest()->get()
+        ]);
+    }
 
 
 }
