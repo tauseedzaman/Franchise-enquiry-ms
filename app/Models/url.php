@@ -9,4 +9,13 @@ class url extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    /**
+     * Get the user that owns the url
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -11,18 +11,19 @@
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         display.textContent = 'Wait For '+ minutes + ":" + seconds + " Seconds";
-        console.log(timer);
         if (--timer < 0) {
             localStorage.removeItem("url_submit");
             clearInterval(refreshIntervalId);
             display.style.display="none";
+            document.querySelector('#url').removeAttribute("disabled");
+            document.querySelector('#btn').removeAttribute("disabled");
         }
     }, 1000);
 }
 
 
-function WaitFortwoMin() {
-    var Minutes = 60 * 2,
+function WaitFortwoMin(timer = 60 * 2 ) {
+    var Minutes = timer,
     display = document.querySelector('#timer');
     startTimer(Minutes, display);
 
@@ -31,18 +32,21 @@ function WaitFortwoMin() {
 function check_storage(){
 
     document.querySelector('#timer').style.display="block";
+
     if (localStorage.getItem("url_submit")) {
-        WaitFortwoMin();
+        if(localStorage.getItem("url_submit") > new Date().getTime()){
+            // let timer = ((localStorage.getItem("url_submit") - new Date().getTime()/1000)/60);
+            WaitFortwoMin();
+        }
     }
 }
 
 check_storage();
 
-
 livewire.on("save_url",timer=>{
-    // console.log(timer+120);
-    // console.log(new Date().getTime());
     document.querySelector('#timer').style.display="block";
-    localStorage.setItem("url_submit", timer);
+    document.querySelector('#url').setAttribute("disabled",true);
+    document.querySelector('#btn').setAttribute("disabled",true);
+    localStorage.setItem("url_submit",Number(String(timer+"000"))+120000);
     WaitFortwoMin();
 });

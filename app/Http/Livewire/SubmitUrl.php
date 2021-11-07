@@ -22,7 +22,7 @@ class SubmitUrl extends Component
         if(url::where("user_id",auth()->id())->where("url",$this->url)->count() > 0){
             return session()->flash('error', "You All Ready Have Added This URL. Please Choose another one");
         }
-        if ((intval(url::where("user_id",auth()->id())->latest()->first()->on)+120) > Time() ) {
+        if ((url::where("user_id",auth()->id())->latest()->first() ? url::where("user_id",auth()->id())->latest()->first()->on+120 : null)  > Time() ) {
             return session()->flash('error', "Please Wait for 2 minutes");
         }
         $timer = Time();
@@ -34,6 +34,7 @@ class SubmitUrl extends Component
 
         $this->url = '';
         session()->flash('message', "<b>URL Submitted Successfully!</b><br /> Please Wait for two minutes for Submitting Another URL");
+        // $timer = strval($timer+"000");
         $this->emit("save_url",$timer);
 }
 

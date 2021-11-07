@@ -10,7 +10,7 @@ class MyWorkSheet extends Component
     public function render()
     {
         return view('livewire.my-work-sheet',[
-            "urls" => url::latest()->paginate(50)
+            "urls" => url::where("user_id",auth()->id())->latest()->paginate(50)
         ])->layout("layouts.app-livewire");
     }
 }

@@ -20,16 +20,9 @@
                                     @foreach ($urls as $url)
                                     <tr>
                                         <td>{{ $loop->index }}</td>
-                                        <td>{{ $url->url }}</td>
+                                        <td><a href="{{ $url->url }}" target="__blank">{{ $url->url }}</a></td>
                                         <td>{{ $url->created_at->format("M-d-Y h:m:s") }}</td>
-                                        <td>{{ $url->status }}</td>
-                                        {{-- <td>
-                                            <div class="btn-group " role="group" aria-label="Actions">
-                                                <center class="text-center">
-                                                <button class="btn btn-danger" type="button" wire:click="delete({{ $url->id }})">Delete</button>
-                                                </center>
-                                            </div>
-                                        </td> --}}
+                                        <td><b>{{ $url->status }}</b></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

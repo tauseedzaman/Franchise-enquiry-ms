@@ -24,6 +24,7 @@ use App\Http\Livewire\admin\{
     BusinessPlan,
     ClassifiedSite,
     Downloads,
+    ManageSubmittedUrls,
     SystemWork,
     WhayJoin
 };
@@ -167,6 +168,9 @@ Route::prefix('admin')->group(function () {
 
         // admin classified site management
         Route::get('Classified-Site',ClassifiedSite::class)->name("admin.classifiedSite");
+
+        // admin submitted url approve managment
+        Route::get('Manage-submitted-urls',ManageSubmittedUrls::class)->name("admin.submittedUrls");
 
         Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
         Route::get('/',[adminHomeController::class,'index'])->name("admin.home");

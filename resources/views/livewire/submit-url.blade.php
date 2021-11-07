@@ -31,7 +31,7 @@
                             <h3 id="timer" class="text-danger text-center "></h3>
                             <div class="mt-1 mb-0">
                                 <div class="d-grid"><button class="btn btn-primary btn-block"
-                                        type="submit" onclick="">Submit</button></div>
+                                        type="submit" id="btn">Submit</button></div>
                             </div>
                         </form>
                     </div>
