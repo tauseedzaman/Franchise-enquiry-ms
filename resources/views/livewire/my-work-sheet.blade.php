@@ -17,22 +17,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($categories as $category)
+                                    @foreach ($urls as $url)
                                     <tr>
-                                        <td>{{ $category->id }}</td>
-                                        <td>{{ $category->title }}</td>
-                                        <td>{{ $category->description }}</td>
-                                        <td>{{ $category->created_at->format("M-d-Y") }}</td>
-                                        <td>
+                                        <td>{{ $loop->index }}</td>
+                                        <td>{{ $url->url }}</td>
+                                        <td>{{ $url->created_at->format("M-d-Y h:m:s") }}</td>
+                                        <td>{{ $url->status }}</td>
+                                        {{-- <td>
                                             <div class="btn-group " role="group" aria-label="Actions">
                                                 <center class="text-center">
-                                                <button class="btn btn-danger" type="button" wire:click="delete({{ $category->id }})">Delete</button>
-                                                <button class="btn btn-info" type="button" wire:click="edit({{ $category->id }})">Edit</button>
+                                                <button class="btn btn-danger" type="button" wire:click="delete({{ $url->id }})">Delete</button>
                                                 </center>
                                             </div>
-                                        </td>
+                                        </td> --}}
                                     </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

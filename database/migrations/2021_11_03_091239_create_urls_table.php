@@ -15,7 +15,12 @@ class CreateUrlsTable extends Migration
     {
         Schema::create('urls', function (Blueprint $table) {
             $table->id();
+            $table->string('url');
+            $table->string('status')->nullable()->default("Pending");
+            $table->string('on');
+            $table->foreignId("user_id")->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

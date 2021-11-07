@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\url;
 use Livewire\Component;
 
 class MyWorkSheet extends Component
@@ -9,7 +10,7 @@ class MyWorkSheet extends Component
     public function render()
     {
         return view('livewire.my-work-sheet',[
-            // "feedbacks" => feedbacks::latest()->paginate(20)
-        ])->layout("layouts.livewire");
+            "urls" => url::latest()->paginate(50)
+        ])->layout("layouts.app-livewire");
     }
 }
