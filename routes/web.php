@@ -23,6 +23,7 @@ use App\Http\Livewire\admin\{
     AdPostingDemo,
     BusinessPlan,
     ClassifiedSite,
+    DisableLoginRegister,
     Downloads,
     ManageSubmittedUrls,
     SystemWork,
@@ -158,6 +159,8 @@ Route::prefix('admin')->group(function () {
             Route::post('/update/{id}',[systemWorkController::class,'update'])->name('admin.systemWork.update');
         });
 
+
+
         // admin Business Plan CRUD
         Route::prefix('Business-Plan')->group(function () {
             Route::get('/',BusinessPlan::class)->name('admin.Business-Plan');
@@ -173,6 +176,9 @@ Route::prefix('admin')->group(function () {
         Route::get('Manage-submitted-urls',ManageSubmittedUrls::class)->name("admin.submittedUrls");
 
         Route::get('Feedback-Videos',FeedbackVideos::class)->name('admin.feedback.video');
+
+        // admin manage login register pages (disable/enable)
+        Route::get("Manage-Users-Login-Register",DisableLoginRegister::class)->name("admin.disableLoginRegister");
         Route::get('/',[adminHomeController::class,'index'])->name("admin.home");
 
 
@@ -181,6 +187,7 @@ Route::prefix('admin')->group(function () {
 
 
 Auth::routes();
+
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/submit-Url', SubmitUrl::class)->name('auth.submitUrl');

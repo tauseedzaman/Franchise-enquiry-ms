@@ -18,7 +18,7 @@ class CreateUploadsTable extends Migration
             $table->string("title");
             $table->text("description");
             $table->string("page");
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
