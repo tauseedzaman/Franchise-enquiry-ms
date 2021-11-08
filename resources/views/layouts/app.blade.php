@@ -44,13 +44,13 @@
                        <a class="nav-link menu_item" href="{{ route("admin.home") }}"><b>Admin</b></a>
                    </li>
                    @endif
-                   @endauth
-                    <li class="nav-item   ">
-                        <a class="nav-link menu_item cursors-pionter" style="cursor: pointer" title="Logout" onclick="document.getElementById('logout').submit()"><b>Logout</b></a>
+                   <li class="nav-item   ">
+                       <a class="nav-link menu_item cursors-pionter" style="cursor: pointer" title="Logout" onclick="document.getElementById('logout').submit()"><b>Logout</b></a>
                     </li>
                     <form method="post" id="logout" action="{{ route('logout') }}">
                         @csrf
                     </form>
+                    @endauth
                     <li class="nav-item d-flex align-items-left ">
                         <ul class=" text-light " style="list-style: none;">
                             <li>ISO.No: 1111111111</li>

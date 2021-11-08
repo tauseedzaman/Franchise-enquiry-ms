@@ -42,6 +42,7 @@ use App\Http\Controllers\admin\{
 use App\Http\Controllers\{
     HomeController,
     helperController,
+    adminLoginController
 
 };
 use App\Http\Controllers\admin\homeController as adminHomeController;
@@ -184,6 +185,11 @@ Route::prefix('admin')->group(function () {
 
     });
 });
+
+// let the admins to login
+Route::get("admin/login",[adminLoginController::class,"index"])->name("admin.login");
+Route::post("admin/login",[adminLoginController::class,"login"])->name("admin.HandleLogin");
+
 
 
 Auth::routes();

@@ -20,13 +20,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="name">Title</label>
-                                        <input class="form-control @error("title") is-invalid  @enderror" id="title" type="text" wire:model.lazy="title" autofocus placeholder="Enter Category title" />
+                                        <input class="form-control @error("title") is-invalid  @enderror" id="title" type="text" wire:model.lazy="title" autofocus placeholder="Enter title for Users" />
                                         @error("title") <span class="text-danger px-3" >{{ $message }} </span> @enderror
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group mt-3">
                                     <label for="description">Message </label>
-                                    <textarea id="description" class="form-control @error("description") is-invalid  @enderror" wire:model.lazy="description" name="description" rows="3" placeholder="Enter Category Description"></textarea>
+                                    <textarea id="description" class="form-control @error("description") is-invalid  @enderror" wire:model.lazy="description" name="description" rows="3" placeholder="Enter Message for Users"></textarea>
                                     @error("description") <span class="text-danger px-3" >{{ $message }} </span> @enderror
                                 </div>
                             </div>

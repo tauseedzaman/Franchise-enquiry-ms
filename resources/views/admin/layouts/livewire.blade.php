@@ -114,10 +114,19 @@
                         <a class="nav-link" href="{{ route("admin.create_post") }}">Add Post</a>
                     </nav>
                 </div>
-                <a class="nav-link collapsed" href="{{ route("admin.classifiedSite") }}" >
+                <a class="nav-link collapsed" href="{{ route("admin.classifiedSite") }}" data-bs-toggle="collapse"
+                data-bs-target="#" aria-expanded="false" aria-controls="">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Classified Sites
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+                        <a class="nav-link collapsed" href="{{ route("admin.disableLoginRegister") }}" data-bs-toggle="collapse"
+                        data-bs-target="#" aria-expanded="false" aria-controls="">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        On/Off Registeration
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
 
-                            Classified Sites
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

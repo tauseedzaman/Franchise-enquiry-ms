@@ -134,6 +134,16 @@
                                 </a>
                             </nav>
                         </div>
+
+                        <a class="nav-link collapsed" href="{{ route("admin.disableLoginRegister") }}" data-bs-toggle="collapse"
+                            data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            On/Off Registeration
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+
+
+
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
