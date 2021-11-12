@@ -42,6 +42,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+     /**
+     * Return user data
+     *
+     */
+    public function permissions()
+    {
+        return $this->hasMany(role::class,"id","user_id");
+    }
+
     /**
          * Get all of the comments for the post
          *

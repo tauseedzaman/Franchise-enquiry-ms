@@ -53,11 +53,7 @@
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark mx-md-4 mx-sr-auto  " href="">Submit URL </a>
-                    </li>
-
-                    <li class="nav-item bg-success rounded my-1 mx-1">
-                        <a class="nav-link text-dark  mx-md-4 mx-sr-auto mx-sr-0  " href="#">Support Ticket</a>
+                        <a class="nav-link text-dark  mx-md-4 mx-sr-auto mx-sr-0  " href="{{ route("auth.supportTeckets") }}">Support Ticket</a>
                     </li>
 
                     <li class="nav-item bg-success rounded my-1 mx-1">

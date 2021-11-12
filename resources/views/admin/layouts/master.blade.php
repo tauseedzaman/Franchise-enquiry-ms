@@ -136,9 +136,24 @@
                         </div>
 
                         <a class="nav-link collapsed" href="{{ route("admin.disableLoginRegister") }}" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
+                            data-bs-target="#" aria-expanded="false" aria-controls="">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             On/Off Registeration
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+
+
+                        <a class="nav-link collapsed" href="{{ route("admin.tickets") }}" data-bs-toggle="collapse"
+                            data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Tickets
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+
+                        <a class="nav-link collapsed" href="{{ route("admin.agents") }}" data-bs-toggle="collapse"
+                            data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Employees
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
 

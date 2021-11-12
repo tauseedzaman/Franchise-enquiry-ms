@@ -26,7 +26,7 @@ class ClassifiedSite extends Component
         }else{
         $this->validate([
             'name' => "required",
-            "link" => "required"
+            "link" => "required|url"
         ]);
         ModelsClassifiedSite::create([
             'name' => $this->name,
@@ -54,7 +54,7 @@ class ClassifiedSite extends Component
     {
         $this->validate([
             'name' => "required",
-            "link" => "required"
+            "link" => "required|url"
         ]);
         $site = ModelsClassifiedSite::findOrFail($id);
         $site->name = $this->name;
@@ -91,8 +91,15 @@ class ClassifiedSite extends Component
     }
     public function render()
     {
-        return view('livewire.admin.classified-site',[
-            "sites" => ModelsClassifiedSite::latest()->paginate(100)
-        ])->layout("admin.layouts.livewire");
+        if (auth()->user()->is_admin) {
+
+            return view('livewire.admin.classified-site',[
+                "sites" => ModelsClassifiedSite::latest()->paginate(100)
+                ])->layout("admin.layouts.livewire");
+        }else{
+            return view('livewire.admin.classified-site',[
+                "sites" => ModelsClassifiedSite::latest()->paginate(100)
+                ])->layout("employee.layouts.livewire");
+        }
     }
 }

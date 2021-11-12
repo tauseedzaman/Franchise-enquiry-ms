@@ -39,9 +39,16 @@
                         <a class="nav-link menu_item" href="{{ url('/') }}"><b>Contact</b></a>
                     </li>
                    @auth
-                   @if(auth()->user()->is_admin == 1)
+
+                    @if(auth()->user()->is_admin == 1)
+                    <li class="nav-item   ">
+                        <a class="nav-link menu_item" href="{{ route("admin.home") }}"><b>Admin</b></a>
+                    </li>
+                    @endif
+
+                   @if(auth()->user()->is_agent == 1)
                    <li class="nav-item   ">
-                       <a class="nav-link menu_item" href="{{ route("admin.home") }}"><b>Admin</b></a>
+                       <a class="nav-link menu_item" href="{{ route("employee.index") }}"><b>CPanel</b></a>
                    </li>
                    @endif
                    <li class="nav-item   ">

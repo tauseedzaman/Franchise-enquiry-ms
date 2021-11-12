@@ -5,7 +5,8 @@ use App\Http\Livewire\{
     Contactus,
     FeedbackVideos as ClientFeedbackVideos,
     MyWorkSheet,
-    SubmitUrl
+    SubmitUrl,
+    SupportTickets
 };
 use App\Http\Livewire\blog\{
     blog,
@@ -21,12 +22,15 @@ use App\Http\Livewire\admin\{
     Testimonials,
     fieldWorkDemo,
     AdPostingDemo,
+    Agents,
     BusinessPlan,
     ClassifiedSite,
     DisableLoginRegister,
     Downloads,
     ManageSubmittedUrls,
     SystemWork,
+    Tickets,
+    ViewTicket as AdminViewTicket,
     WhayJoin
 };
 use App\Http\Controllers\admin\{
@@ -42,11 +46,14 @@ use App\Http\Controllers\admin\{
 use App\Http\Controllers\{
     HomeController,
     helperController,
-    adminLoginController
-
+    adminLoginController,
+    employeesController
 };
 use App\Http\Controllers\admin\homeController as adminHomeController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\helpDesk\TicketController;
 use App\Http\Controllers\user\ProfileController;
+use App\Http\Livewire\Auth\ViewTicket;
 
 Route::get('/',[helperController::class,"welcome"])->name("welcome");
 
@@ -79,6 +86,12 @@ Route::prefix('/blog')->group(function () {
 
 // admin routes
 Route::prefix('admin')->group(function () {
+
+    // let the admins to login
+    Route::get("login",[adminLoginController::class,"index"])->name("admin.login");
+    Route::post("login",[adminLoginController::class,"login"])->name("admin.HandleLogin");
+
+
     Route::middleware(["auth",'admin'])->group(function () {
         // admin blog related routes
         Route::get("/categories",categories::class)->name("admin.category");
@@ -180,17 +193,70 @@ Route::prefix('admin')->group(function () {
 
         // admin manage login register pages (disable/enable)
         Route::get("Manage-Users-Login-Register",DisableLoginRegister::class)->name("admin.disableLoginRegister");
+
         Route::get('/',[adminHomeController::class,'index'])->name("admin.home");
+
+        // manage admin tickets
+        Route::get('/manage-tickets',Tickets::class)->name("admin.tickets");
+        Route::get('/view-tickets/{uuid}',AdminViewTicket::class)->name("admin.ViewTicket");
+
+
+        // manage employees or agents
+        Route::get('/manage-employees',Agents::class)->name("admin.agents");
+
+
 
 
     });
 });
 
-// let the admins to login
-Route::get("admin/login",[adminLoginController::class,"index"])->name("admin.login");
-Route::post("admin/login",[adminLoginController::class,"login"])->name("admin.HandleLogin");
+// employees routes
+Route::prefix('/Manage')->group(function () {
+    Route::middleware('auth','agent')->group(function (){
+
+        Route::get('/',[employeesController::class,'index'])->name("employee.index");
+
+        Route::middleware(['ClassifiedWebsiteAdd'])->group(function () {
+            // admin classified site management
+            Route::get('Classified-Site',ClassifiedSite::class)->name("admin.classifiedSite");
+        });
+
+        Route::middleware(['UrlApproval'])->group(function () {
+            // admin submitted url approve managment
+             Route::get('Manage-submitted-urls',ManageSubmittedUrls::class)->name("admin.submittedUrls");
+        });
+
+        Route::middleware(['SupportTickets'])->group(function () {
+            // manage admin tickets
+            Route::get('/tickets',Tickets::class)->name("admin.tickets");
+            Route::get('/view-tickets/{uuid}',AdminViewTicket::class)->name("admin.ViewTicket");
+        });
+
+        Route::middleware(['CreateFranchise'])->group(function () {
+            // CreateFranchise managment center
+        });
+
+        Route::middleware(['UserVerification'])->group(function () {
+            // UserVerification managment center
+        });
+
+        Route::middleware(['PaymentApproval'])->group(function () {
+            // PaymentApproval managment center
+        });
+
+        Route::middleware(['PakageAdd'])->group(function () {
+            // PakageAdd managment center
+        });
+
+        Route::middleware(['MyWorkMattor'])->group(function () {
+            // MyWorkMattor managment center
+        });
 
 
+
+
+    });
+});
 
 Auth::routes();
 
@@ -199,8 +265,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/submit-Url', SubmitUrl::class)->name('auth.submitUrl');
     Route::get('/My-Work-Sheet', MyWorkSheet::class)->name('auth.myWorkSheet');
     Route::get('/Classified-Sites', [helperController::class,"classifiedSite"])->name('auth.classifiedSites');
+    Route::get("/tickets",SupportTickets::class)->name("auth.supportTeckets");
+    Route::get("/ticket/create",[TicketController::class,"view"])->name("auth.createTicket");
+    Route::post("/ticket/create",[TicketController::class,"SaveTicket"])->name("auth.StoreTicket");
+    Route::get("/view-ticket/{uuid}",ViewTicket::class)->name("auth.viewTicket");
 });
-
+Route::post("/fileUpload",[FileController::class,"store"])->name("auth.storeFile");
 
 
 

@@ -27,7 +27,7 @@
                                     <br>
                                     <div class="form-group mt-3">
                                         <label for="name">Name</label>
-                                        <input class="form-control @error("name") is-invalid  @enderror" id="name" type="text" wire:model.deffer="name" autofocus placeholder="Enter Website name" />
+                                        <input class="form-control @error("name") is-invalid  @enderror" id="name" type="text" wire:model.defer="name" autofocus placeholder="Enter Website name" />
                                         @error("name") <span class="text-danger px-3" >{{ $message }} </span> @enderror
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                                 <br>
                                 <div class="form-group mt-3">
                                     <label for="link">Link</label>
-                                    <textarea id="link" class="form-control @error("link") is-invalid  @enderror" wire:model.deffer="link" name="link" rows="3" placeholder="Enter Website link"></textarea>
+                                    <textarea id="link" class="form-control @error("link") is-invalid  @enderror" wire:model.defer="link" name="link" rows="3" placeholder="Enter Website link"></textarea>
                                     @error("link") <span class="text-danger px-3" >{{ $message }} </span> @enderror
                                 </div>
                             </div>

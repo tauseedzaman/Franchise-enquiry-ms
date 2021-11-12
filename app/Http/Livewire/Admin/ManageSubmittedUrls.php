@@ -23,8 +23,14 @@ class ManageSubmittedUrls extends Component
     }
     public function render()
     {
-        return view('livewire.admin.manage-submitted-urls',[
-            "urls" => url::where("status","Pending")->latest()->paginate(100)
-        ])->layout("admin.layouts.livewire");
+        if (auth()->user()->is_admin) {
+            return view('livewire.admin.manage-submitted-urls',[
+                "urls" => url::where("status","Pending")->latest()->paginate(100)
+            ])->layout("admin.layouts.livewire");
+        }else{
+            return view('livewire.admin.manage-submitted-urls',[
+                "urls" => url::where("status","Pending")->latest()->paginate(100)
+            ])->layout("employee.layouts.livewire");
+        }
     }
 }
