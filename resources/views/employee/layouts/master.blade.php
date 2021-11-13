@@ -53,36 +53,83 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{{ url("admin/") }}">
+                        <a class="nav-link" href="{{ route("employee.index") }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
+                        @if ($agents->where('user_id',auth()->id())->where('role_id',6)->count() > 0)
+                    <a class="nav-link collapsed" href="{{ route("admin.classifiedSite") }}" data-bs-toggle="collapse"
+                data-bs-target="#" aria-expanded="false" aria-controls="">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Classified Sites
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            @endif
+
+            @if ($agents->where('user_id',auth()->id())->where('role_id',3)->count() > 0)
+            <a class="nav-link collapsed" href="{{ route("admin.tickets") }}" data-bs-toggle="collapse"
+                data-bs-target="#" aria-expanded="false" aria-controls="">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Tickets
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            @endif
 
 
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#classifiedSite"
-                            aria-expanded="false" aria-controls="classifiedSite">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Classified Sites
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="classifiedSite" aria-labelledby="headingTwo"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="{{ route("admin.classifiedSite") }}" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Manage ClassifiedSite
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                            </nav>
-                        </div>
+            @if ($agents->where('user_id',auth()->id())->where('role_id',1)->count() > 0)
+            <a class="nav-link collapsed" href="{{ route("admin.submittedUrls") }}" data-bs-toggle="collapse"
+                data-bs-target="#" aria-expanded="false" aria-controls="">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                URL Approve
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            @endif
 
-                        <a class="nav-link collapsed" href="{{ route("admin.tickets") }}" data-bs-toggle="collapse"
-                            data-bs-target="#" aria-expanded="false" aria-controls="">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Tickets
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
+            @if ($agents->where('user_id',auth()->id())->where('role_id',2)->count() > 0)
+            <a class="nav-link collapsed" href="{{ route("admin.PaymentApproval") }}" data-bs-toggle="collapse"
+                data-bs-target="#" aria-expanded="false" aria-controls="">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Payment Approve
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            @endif
+
+            @if ($agents->where('user_id',auth()->id())->where('role_id',4)->count() > 0)
+            <a class="nav-link collapsed" href="{{ route("admin.ManagePackeges") }}" data-bs-toggle="collapse"
+            data-bs-target="#" aria-expanded="false" aria-controls="">
+            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+            Packeges
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+        </a>
+            @endif
+
+            @if ($agents->where('user_id',auth()->id())->where('role_id',5)->count() > 0)
+                <a class="nav-link collapsed" href="{{ route("admin.MyWorkMattor") }}" data-bs-toggle="collapse"
+                data-bs-target="#" aria-expanded="false" aria-controls="">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                My Work Mattor
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            @endif
+
+            @if ($agents->where('user_id',auth()->id())->where('role_id',7)->count() > 0)
+                <a class="nav-link collapsed" href="{{ route("admin.User.Verification") }}" data-bs-toggle="collapse"
+                data-bs-target="#" aria-expanded="false" aria-controls="">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                User Verifications
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            @endif
+
+            @if ($agents->where('user_id',auth()->id())->where('role_id',8)->count() > 0)
+                <a class="nav-link collapsed" href="{{ route("admin.MangeFranchise") }}" data-bs-toggle="collapse"
+                    data-bs-target="#" aria-expanded="false" aria-controls="">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Franchise
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+            @endif
+
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

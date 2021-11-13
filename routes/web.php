@@ -234,22 +234,42 @@ Route::prefix('/Manage')->group(function () {
 
         Route::middleware(['CreateFranchise'])->group(function () {
             // CreateFranchise managment center
+            Route::get('/MangeFranchise', function ()
+            {
+                dd("wroking");
+            })->name('admin.MangeFranchise');
         });
 
         Route::middleware(['UserVerification'])->group(function () {
             // UserVerification managment center
+            Route::get('/User-Verification', function ()
+            {
+                dd("wroking");
+            })->name('admin.User.Verification');
         });
 
         Route::middleware(['PaymentApproval'])->group(function () {
             // PaymentApproval managment center
+            Route::get('/Payment-Approve', function ()
+            {
+                dd("wroking");
+            })->name('admin.PaymentApproval');
         });
 
         Route::middleware(['PakageAdd'])->group(function () {
             // PakageAdd managment center
+            Route::get('/Packages', function ()
+            {
+                dd("wroking");
+            })->name('admin.ManagePackeges');
         });
 
         Route::middleware(['MyWorkMattor'])->group(function () {
             // MyWorkMattor managment center
+            Route::get('/MyWorkMattor', function ()
+            {
+                dd("wroking");
+            })->name('admin.MyWorkMattor');
         });
 
 
