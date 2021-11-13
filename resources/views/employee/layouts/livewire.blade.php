@@ -7,19 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>{{  config('app.name') }} Admin Panel</title>
+    <title>{{ config('app.name') }} Control Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="{{ asset("dist/css/styles.css") }}" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-        crossorigin="anonymous"></script>
-        @livewireStyles
-        @livewireScripts
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous">
+    </script>
+    @livewireStyles
+    @livewireScripts
 </head>
+
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{{ url("admin/") }}">{{  config('app.name') }} Admin Panel</a>
+        <a class="navbar-brand ps-3" href="{{ url("admin/") }}">{{ config('app.name') }} Admin Panel</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -35,7 +36,7 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"data-bs-toggle="dropdown"
                     aria-expanded="false">{{ auth()->user()->name }}<i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
@@ -43,7 +44,7 @@
                     </li>
                     <li><a class="dropdown-item" onclick="document.getElementById('logout').submit()">Logout</a></li>
                 </ul>
-                <form method="post" action="{{ route("logout") }}" class="form-hidden" id="logout" >
+                <form method="post" action="{{ route("logout") }}" class="form-hidden" id="logout">
                     @csrf
                 </form>
             </li>
@@ -59,38 +60,83 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
+                        @if (App\Models\Agents::where('user_id',auth()->id())->where('role_id',6)->count() > 0)
+                        <a class="nav-link collapsed" href="{{ route("admin.classifiedSite") }}"
+                            data-bs-toggle="collapse"data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Classified Sites
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @endif
 
-                        @if ($agents->where(['user_id' => auth()->id(),"role_id" => 6]))
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#classifiedSite"
-                        aria-expanded="false" aria-controls="classifiedSite">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Classified Sites
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="classifiedSite" aria-labelledby="headingTwo"
-                    data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                        <a class="nav-link collapsed" href="{{ route("admin.classifiedSite") }}" data-bs-toggle="collapse"
-                        data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                        aria-controls="pagesCollapseAuth">
-                        Manage ClassifiedSite
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                </nav>
-            </div>
-            @endif
+                        @if (App\Models\Agents::where('user_id',auth()->id())->where('role_id',3)->count() > 0)
+                        <a class="nav-link collapsed" href="{{ route("admin.tickets") }}"data-bs-toggle="collapse"
+                            data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Tickets
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @endif
 
-                    <a class="nav-link collapsed" href="{{ route("admin.tickets") }}" data-bs-toggle="collapse"
-                        data-bs-target="#" aria-expanded="false" aria-controls="">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Tickets
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
+
+                        @if (App\Models\Agents::where('user_id',auth()->id())->where('role_id',1)->count() > 0)
+                        <a class="nav-link collapsed" href="{{ route("admin.submittedUrls") }}"
+                            data-bs-toggle="collapse"data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            URL Approve
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @endif
+
+                        @if (App\Models\Agents::where('user_id',auth()->id())->where('role_id',2)->count() > 0)
+                        <a class="nav-link collapsed" href="{{ route("admin.PaymentApproval") }}"
+                            data-bs-toggle="collapse"data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Payment Approve
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @endif
+
+                        @if (App\Models\Agents::where('user_id',auth()->id())->where('role_id',4)->count() > 0)
+                        <a class="nav-link collapsed" href="{{ route("admin.ManagePackeges") }}"
+                            data-bs-toggle="collapse"data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Packeges
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @endif
+
+                        @if (App\Models\Agents::where('user_id',auth()->id())->where('role_id',5)->count() > 0)
+                        <a class="nav-link collapsed" href="{{ route("admin.MyWorkMattor") }}"
+                            data-bs-toggle="collapse"data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            My Work Mattor
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @endif
+
+                        @if (App\Models\Agents::where('user_id',auth()->id())->where('role_id',7)->count() > 0)
+                        <a class="nav-link collapsed" href="{{ route("admin.User.Verification") }}"
+                            data-bs-toggle="collapse"data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            User Verifications
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @endif
+
+                        @if (App\Models\Agents::where('user_id',auth()->id())->where('role_id',8)->count() > 0)
+                        <a class="nav-link collapsed" href="{{ route("admin.MangeFranchise") }}"
+                            data-bs-toggle="collapse"data-bs-target="#" aria-expanded="false" aria-controls="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Franchise
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @endif
+                    </div>
                 </div>
-            </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                   {{ auth()->user()->name }}
+                    {{ auth()->user()->name }}
                 </div>
             </nav>
         </div>
@@ -110,8 +156,8 @@
             </footer>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
     <script src="{{ asset("dist/js/scripts.js") }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

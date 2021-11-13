@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\agents;
 use App\Models\classifiedSite as ModelsClassifiedSite;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -22,30 +23,29 @@ class ClassifiedSite extends Component
         if ($this->edit_site_id) {
 
             $this->update($this->edit_site_id);
-
-        }else{
-        $this->validate([
-            'name' => "required",
-            "link" => "required|url"
-        ]);
-        ModelsClassifiedSite::create([
-            'name' => $this->name,
-            "link" => $this->link,
-        ]);
-        session()->flash('message', 'Classified-Site Created Successfully.');
-        unset($this->name);
-        unset($this->link);
-        $this->show_data = true;
+        } else {
+            $this->validate([
+                'name' => "required",
+                "link" => "required|url"
+            ]);
+            ModelsClassifiedSite::create([
+                'name' => $this->name,
+                "link" => $this->link,
+            ]);
+            session()->flash('message', 'Classified-Site Created Successfully.');
+            unset($this->name);
+            unset($this->link);
+            $this->show_data = true;
         }
     }
 
     public function show_from()
     {
-            $this->show_data = false;
+        $this->show_data = false;
     }
     public function hide_form()
     {
-            $this->show_data = true;
+        $this->show_data = true;
     }
 
 
@@ -70,8 +70,7 @@ class ClassifiedSite extends Component
         session()->flash('message', 'Classified-Site Updated Successfully.');
 
         $this->btn_text = "Create Category";
-
-}
+    }
 
 
     public function edit($id)
@@ -81,7 +80,7 @@ class ClassifiedSite extends Component
         $this->name = $site->name;
         $this->link = $site->link;
         $this->show_data = false;
-        $this->btn_text="Update Classified-Site";
+        $this->btn_text = "Update Classified-Site";
     }
 
     public function delete($id)
@@ -92,14 +91,13 @@ class ClassifiedSite extends Component
     public function render()
     {
         if (auth()->user()->is_admin) {
-
-            return view('livewire.admin.classified-site',[
+            return view('livewire.admin.classified-site', [
                 "sites" => ModelsClassifiedSite::latest()->paginate(100)
-                ])->layout("admin.layouts.livewire");
-        }else{
-            return view('livewire.admin.classified-site',[
+            ])->layout("admin.layouts.livewire");
+        } else {
+            return view('livewire.admin.classified-site', [
                 "sites" => ModelsClassifiedSite::latest()->paginate(100)
-                ])->layout("employee.layouts.livewire");
+            ])->layout("employee.layouts.livewire");
         }
     }
 }
