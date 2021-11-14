@@ -31,8 +31,11 @@
                             </div>
                             <div class="col text-right ml-auto ">
                                 {{ $ticket->created_at->diffForHumans() }}
-                                <button class="btn btn-outline-dark ml-2" type="button"
-                                    wire:click="show_reply_form()">Reply</button>
+                                <button class="btn btn-outline-dark ml-2 " {{ $ticket->status_id == 1 ? "" : "disabled"  }} type="button"
+                                    wire:click="show_reply_form()"  >Reply</button>
+
+                                    <button class="btn btn-outline-info ml-2" type="button"
+                                    wire:click="close_ticket({{ $ticket->id }})">{{ $ticket->status_id == 1 ? "Close" : "Open"  }}</button>
                             </div>
                         </div>
                     </div>

@@ -28,6 +28,7 @@ use App\Http\Livewire\admin\{
     DisableLoginRegister,
     Downloads,
     ManageSubmittedUrls,
+    MyJobMattor,
     SystemWork,
     Tickets,
     ViewTicket as AdminViewTicket,
@@ -204,6 +205,9 @@ Route::prefix('admin')->group(function () {
         // manage employees or agents
         Route::get('/manage-employees',Agents::class)->name("admin.agents");
 
+        Route::get('/tickets',Tickets::class)->name("admin.tickets");
+        Route::get('/view-tickets/{uuid}',AdminViewTicket::class)->name("admin.ViewTicket");
+
 
 
 
@@ -218,18 +222,18 @@ Route::prefix('/Manage')->group(function () {
 
         Route::middleware(['ClassifiedWebsiteAdd'])->group(function () {
             // admin classified site management
-            Route::get('Classified-Site',ClassifiedSite::class)->name("admin.classifiedSite");
+            Route::get('Classified-Site',ClassifiedSite::class)->name("employee.classifiedSite");
         });
 
         Route::middleware(['UrlApproval'])->group(function () {
             // admin submitted url approve managment
-             Route::get('Manage-submitted-urls',ManageSubmittedUrls::class)->name("admin.submittedUrls");
+             Route::get('Manage-submitted-urls',ManageSubmittedUrls::class)->name("employee.submittedUrls");
         });
 
         Route::middleware(['SupportTickets'])->group(function () {
             // manage admin tickets
-            Route::get('/tickets',Tickets::class)->name("admin.tickets");
-            Route::get('/view-tickets/{uuid}',AdminViewTicket::class)->name("admin.ViewTicket");
+            Route::get('/tickets',Tickets::class)->name("employee.tickets");
+            Route::get('/view-tickets/{uuid}',AdminViewTicket::class)->name("employee.ViewTicket");
         });
 
         Route::middleware(['CreateFranchise'])->group(function () {
@@ -237,7 +241,7 @@ Route::prefix('/Manage')->group(function () {
             Route::get('/MangeFranchise', function ()
             {
                 dd("wroking");
-            })->name('admin.MangeFranchise');
+            })->name('employee.MangeFranchise');
         });
 
         Route::middleware(['UserVerification'])->group(function () {
@@ -245,7 +249,7 @@ Route::prefix('/Manage')->group(function () {
             Route::get('/User-Verification', function ()
             {
                 dd("wroking");
-            })->name('admin.User.Verification');
+            })->name('employee.User.Verification');
         });
 
         Route::middleware(['PaymentApproval'])->group(function () {
@@ -253,7 +257,7 @@ Route::prefix('/Manage')->group(function () {
             Route::get('/Payment-Approve', function ()
             {
                 dd("wroking");
-            })->name('admin.PaymentApproval');
+            })->name('employee.PaymentApproval');
         });
 
         Route::middleware(['PakageAdd'])->group(function () {
@@ -261,20 +265,13 @@ Route::prefix('/Manage')->group(function () {
             Route::get('/Packages', function ()
             {
                 dd("wroking");
-            })->name('admin.ManagePackeges');
+            })->name('employee.ManagePackeges');
         });
 
         Route::middleware(['MyWorkMattor'])->group(function () {
             // MyWorkMattor managment center
-            Route::get('/MyWorkMattor', function ()
-            {
-                dd("wroking");
-            })->name('admin.MyWorkMattor');
+            Route::get('/MyWorkMattor',MyJobMattor::class)->name('employee.MyWorkMattor');
         });
-
-
-
-
     });
 });
 

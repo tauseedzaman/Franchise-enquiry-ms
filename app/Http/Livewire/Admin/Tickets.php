@@ -2,13 +2,16 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\agents;
 use App\Models\File;
 use App\Models\Ticket;
 use App\Models\TicketReply;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use Str;
+
 class Tickets extends Component
 {
 
@@ -24,12 +27,20 @@ class Tickets extends Component
     public $images=[];
     public $body;
     public $checkedElements =[];
-    public $show_ticket_menu=true;
+    public $show_ticket_menu=false;
+    public $agent;
 
-
-    public function checkedAllElements()
+    public function add_agent_to_ticket()
     {
-        dd("yes");
+        if ($this->agent) {
+            $tickets = Ticket::find($this->checkedElements);
+            foreach ($tickets as $ticket) {
+                $ticket->agent_id = $this->agent;
+                $ticket->save();
+            }
+            session()->flash('message', 'Ticket Assigned Successfully');
+        }
+        $this->show_ticket_menu = false;
     }
 
 
@@ -41,8 +52,14 @@ class Tickets extends Component
 
     public function delete_ticket()
     {
-        dd($this->checkedElements);
+        $items = Ticket::find($this->checkedElements);
+        foreach($items as $item) {
+            $item->delete();
+        }
+        unset($this->checkedElements);
+        session()->flash('message', 'Deleted Successfully.');
     }
+
     public $view_this_ticket = null;
 
     public function ticket()
@@ -98,6 +115,7 @@ class Tickets extends Component
         unset($this->subject);
         unset($this->body);
         $this->create_ticket=false;
+        session()->flash('message', 'Ticket Created Successfully.');
         // $ticket->user->notify((new NewTicketFromAgent($ticket)));
 
 }
@@ -133,19 +151,27 @@ class Tickets extends Component
 
     public function close_ticket()
     {
-        dd(Ticket::find($this->checkedElements));
+        $tickets = Ticket::find($this->checkedElements);
+        foreach($tickets as $ticket){
+            $ticket->status_id=1;
+            $ticket->save();
+        }
+        session()->flash('message', 'Tickets Closed Successfully.');
     }
 
 
     public function render()
     {
+        $agents = agents::where("role_id",3)->with("user")->get("user_id",'name');
         if (auth()->user()->is_admin) {
             return view('livewire.admin.tickets',[
+                "agents" => $agents,
                 'tickets' => Ticket::where("subject",'LIKE','%'.$this->search."%")->orderBy('id',$this->order)->paginate(40)
             ])->layout("admin.layouts.livewire");
         }else{
             return view('livewire.admin.tickets',[
-                'tickets' => Ticket::where("subject",'LIKE','%'.$this->search."%")->orderBy('id',$this->order)->paginate(40)
+                'tickets' => Ticket::where("subject",'LIKE','%'.$this->search."%")->orderBy('id',$this->order)->paginate(40),
+                "agents" => $agents
             ])->layout("employee.layouts.livewire");
         }
     }

@@ -40,8 +40,11 @@
                                 <div class="col-4">
                                     <button class="btn btn-danger" type="button" wire:click="delete_ticket()">Delete</button>
                                     <button class="btn btn-warning" type="button" wire:click="close_ticket()">Close Ticket</button>
-                                        <select id="my-select" class="form-inline p-1 px-2 rounded shadow" name="">
-                                            <option>Agents</option>
+                                        <select id="my-select" class="form-inline p-1 px-2 rounded shadow" wire:model="agent" name="agent" wire:change="add_agent_to_ticket()">
+                                            <option>Assign to</option>
+                                            @foreach ($agents as $agent)
+                                              <option value="{{ $agent->user_id }}">{{ $agent->user->name }}</option>
+                                            @endforeach
 
                                         </select>
                                 </div>
@@ -50,7 +53,8 @@
                         @endif
                         <thead class="card-header thead-white">
                             <th>
-                                <input type="checkbox" name="checkedAllElements" wire:change='checkedAllElements()' id="" class="form-check-input">
+                                #
+                                {{-- <input type="checkbox" onchange="checkElements()" wire:change="checkedAllElements()" name="checkedAllElements" id="checkedAllElements" class="form-check-input"> --}}
                             </th>
                             <th>Customer</th>
                             <th>Ticket Summary</th>
@@ -80,7 +84,7 @@
                                             <p class="p-0 m-0" style="color:rgb(160, 154, 155)">{{ $ticket->ticketReplies->first()->body }}</p>
 
                                     </a></td>
-                                    <td><a class="nav-link text-dark" href="{{ route("admin.ViewTicket",$ticket->uuid) }}">{{ $ticket->agent ? $ticket->agent:"Unassigned"  }}</a></td>
+                                    <td><a class="nav-link text-dark" href="{{ route("admin.ViewTicket",$ticket->uuid) }}">{{ $ticket->agent ? $ticket->agent->name:"Unassigned"  }}</a></td>
                                     <td><a class="nav-link text-dark" href="{{ route("admin.ViewTicket",$ticket->uuid) }}">{{ $ticket->status->name }}</a></td>
                                     <td><a class="nav-link text-dark" href="{{ route("admin.ViewTicket",$ticket->uuid) }}"> {{ $ticket->updated_at->diffForHumans() }} </a></td>
                                 </tr>
@@ -170,4 +174,19 @@
         </div>
     </div>
     @endif
+                                <script>
+                                    function checkElements(){
+                                       let elements = document.querySelectorAll("#checkedElements");
+                                       let check = document.querySelector("#checkedAllElements");
+                                       if (check.checked == true) {
+                                        elements.forEach(element => {
+                                           element.checked = true;
+                                       });
+                                       }else{
+                                       elements.forEach(element => {
+                                           element.checked = false;
+                                       });
+                                    }
+                                    }
+                                </script>
 </main>

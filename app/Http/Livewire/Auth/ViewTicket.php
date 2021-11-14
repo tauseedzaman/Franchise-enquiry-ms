@@ -76,6 +76,23 @@ class ViewTicket extends Component
     {
         $this->uuid = $uuid;
     }
+
+
+    public function close_ticket($id)
+    {
+        $ticket = Ticket::find($id);
+        if ($ticket->status_id==2) {
+            $ticket->status_id=1;
+            $ticket->save();
+            session()->flash('message', 'Tickets Opened Successfully. Now You Can Reply...');
+        }else{
+            $ticket->status_id=2;
+            $ticket->save();
+            session()->flash('message', 'Tickets closed Successfully.');
+        }
+
+        // return redirect()->route("auth.supportTeckets");
+    }
     public function render()
     {
         $ticket =Ticket::where(["user_id" => auth()->id(),"uuid" => $this->uuid])->first();

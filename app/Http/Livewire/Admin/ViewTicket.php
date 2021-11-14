@@ -24,6 +24,16 @@ class ViewTicket extends Component
         return redirect()->route("admin.tickets");
     }
 
+    public function close_ticket($id)
+    {
+        $tickets = Ticket::find($id);
+        foreach($tickets as $ticket){
+            $ticket->status_id=1;
+            $ticket->save();
+        }
+        session()->flash('message', 'Ticket Closed Successfully.');
+    }
+
     public function discard_reply()
     {
         $this->show_reply_form=false;

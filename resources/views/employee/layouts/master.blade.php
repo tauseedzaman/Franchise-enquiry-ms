@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>{{  config('app.name') }} Control Panel</title>
+    <title>{{  config('app.name') }} C-Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="{{ asset("dist/css/styles.css") }}" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
@@ -16,7 +16,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{{ url("admin/") }}">{{  config('app.name') }} Control Panel</a>
+        <a class="navbar-brand ps-3" href="{{ url("admin/") }}">{{  config('app.name') }} C-Panel</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -57,7 +57,7 @@
                             Dashboard
                         </a>
                         @if ($agents->where('user_id',auth()->id())->where('role_id',6)->count() > 0)
-                    <a class="nav-link collapsed" href="{{ route("admin.classifiedSite") }}" data-bs-toggle="collapse"
+                    <a class="nav-link collapsed" href="{{ route("employee.classifiedSite") }}" data-bs-toggle="collapse"
                 data-bs-target="#" aria-expanded="false" aria-controls="">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Classified Sites
@@ -66,7 +66,7 @@
             @endif
 
             @if ($agents->where('user_id',auth()->id())->where('role_id',3)->count() > 0)
-            <a class="nav-link collapsed" href="{{ route("admin.tickets") }}" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" href="{{ route("employee.tickets") }}" data-bs-toggle="collapse"
                 data-bs-target="#" aria-expanded="false" aria-controls="">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Tickets
@@ -76,7 +76,7 @@
 
 
             @if ($agents->where('user_id',auth()->id())->where('role_id',1)->count() > 0)
-            <a class="nav-link collapsed" href="{{ route("admin.submittedUrls") }}" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" href="{{ route("employee.submittedUrls") }}" data-bs-toggle="collapse"
                 data-bs-target="#" aria-expanded="false" aria-controls="">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 URL Approve
@@ -85,7 +85,7 @@
             @endif
 
             @if ($agents->where('user_id',auth()->id())->where('role_id',2)->count() > 0)
-            <a class="nav-link collapsed" href="{{ route("admin.PaymentApproval") }}" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" href="{{ route("employee.PaymentApproval") }}" data-bs-toggle="collapse"
                 data-bs-target="#" aria-expanded="false" aria-controls="">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Payment Approve
@@ -94,7 +94,7 @@
             @endif
 
             @if ($agents->where('user_id',auth()->id())->where('role_id',4)->count() > 0)
-            <a class="nav-link collapsed" href="{{ route("admin.ManagePackeges") }}" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" href="{{ route("employee.ManagePackeges") }}" data-bs-toggle="collapse"
             data-bs-target="#" aria-expanded="false" aria-controls="">
             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
             Packeges
@@ -103,7 +103,7 @@
             @endif
 
             @if ($agents->where('user_id',auth()->id())->where('role_id',5)->count() > 0)
-                <a class="nav-link collapsed" href="{{ route("admin.MyWorkMattor") }}" data-bs-toggle="collapse"
+                <a class="nav-link collapsed" href="{{ route("employee.MyWorkMattor") }}" data-bs-toggle="collapse"
                 data-bs-target="#" aria-expanded="false" aria-controls="">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 My Work Mattor
@@ -112,7 +112,7 @@
             @endif
 
             @if ($agents->where('user_id',auth()->id())->where('role_id',7)->count() > 0)
-                <a class="nav-link collapsed" href="{{ route("admin.User.Verification") }}" data-bs-toggle="collapse"
+                <a class="nav-link collapsed" href="{{ route("employee.User.Verification") }}" data-bs-toggle="collapse"
                 data-bs-target="#" aria-expanded="false" aria-controls="">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 User Verifications
@@ -121,7 +121,7 @@
             @endif
 
             @if ($agents->where('user_id',auth()->id())->where('role_id',8)->count() > 0)
-                <a class="nav-link collapsed" href="{{ route("admin.MangeFranchise") }}" data-bs-toggle="collapse"
+                <a class="nav-link collapsed" href="{{ route("employee.MangeFranchise") }}" data-bs-toggle="collapse"
                     data-bs-target="#" aria-expanded="false" aria-controls="">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Franchise
