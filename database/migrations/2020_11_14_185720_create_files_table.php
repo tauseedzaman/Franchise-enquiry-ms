@@ -23,6 +23,7 @@ class CreateFilesTable extends Migration
                 $table->string('disk');
                 $table->string('path');
                 $table->foreignId('ticket_reply_id')->nullable()->constrained('ticket_replies')->nullOnDelete();
+                $table->foreignId('my_job_mattor_id')->nullable()->constrained('my_job_mattors')->nullOnDelete();
                 $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
                 $table->timestamps();
             });

@@ -1,5 +1,6 @@
 <main>
     @if (!$create_jobMattor)
+    @if (!$create_jobMattor && !$view_this_job_mattor)
     <div class="container">
         <div class="row  mt-4 justify-content-around">
             <div class="col-12">
@@ -44,7 +45,7 @@
                             <th>Title</th>
                             <th>Category</th>
                             <th>Phone</th>
-                            <th>Price</th>
+                            <th>Price (INR)</th>
                             <th>Created at</th>
                             <th>Actions</th>
                         </thead>
@@ -61,7 +62,7 @@
                                     <td>{{ $post->category }}</td>
                                     <td>{{ $post->phone }}</td>
                                     <td>{{ $post->price }}</td>
-                                    <td>{{ $post->created_at->deffForHumans() }}</td>
+                                    <td>{{ $post->created_at->diffForHumans() }}</td>
                                     <td>
                                         <button class="btn " title="View this" wire:click.prevent="view_post({{ $post->id }})"
                                             style="background-color:rgb(14, 160, 46);color:rgb(255, 0, 0);border:none;padding:5px 10px;border-radius:40px;">View<i
@@ -85,6 +86,64 @@
             </div>
         </div>
     </div>
+    @else
+    <div class="container">
+        <div class="row  mt-4 justify-content-around">
+
+            <div class="col-10">
+
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col my-3">
+                    <div class="card rounded-lg mt-2">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-10">
+                                    <h1 class=""><b>My Job Mattor #{{ $this_post->id }}</b></h1>
+                                </div>
+                                <div class="col-2 float-center ">
+                                    <center>
+                                        <button wire:click="return_back_to_list()" class="btn btn-block btn-warning  ml-auto" type="button"><b>Return Back</b></button>
+                                    </center>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title"><b>Title: </b>{{ $this_post->title }}</h5>
+                            <p class="card-text"><b>Description: </b>{{ $this_post->description }}</p>
+                            <p class="card-text"><b>Category: </b>{{ $this_post->category }}</p>
+                            <p class="card-text"><b>SubCategory: </b>{{ $this_post->subcategory }}</p>
+                            <p class="card-text"><b>Location: </b>{{ $this_post->location }}</p>
+                            <p class="card-text"><b>Website: </b>{{ $this_post->website }}</p>
+                            <p class="card-text"><b>Email: </b>{{ $this_post->email }}</p>
+                            <p class="card-text"><b>Contact No: </b>{{ $this_post->phone }}</p>
+                            <p class="card-text"><b>WhatsApp: </b>{{ $this_post->whatsapp }}</p>
+                            <p class="card-text"><b>Price (INR): </b>{{ $this_post->price }}</p>
+                            <p class="card-text"><b>Images: </b>
+                                @foreach ($this_post->files as $image)
+                                   @if ($image->extension == "mp4")
+                                   @else
+                                   <img src="{{ config('app.url').$image->path }}" />
+                                   @endif
+                                   @endforeach
+                                </p>
+                                <p class="card-text"><b>video: </b>
+                                    @foreach ($this_post->files as $image)
+                                    @if ($image->extension == "mp4")
+                                    <video controls src="{{ config('app.url').$image->path }}"></video>
+                                    @else
+
+                                    @endif
+                                    @endforeach
+                                </p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    @endif
     @else
     <div class="container">
         <div class="row  mt-4 justify-content-around">
@@ -203,7 +262,7 @@
                                     </div>
 
                                         <div class="form-file mt-2">
-                                        <label for="name">Add 4 images</label>
+                                        <label for="name">Choose images</label>
                                             <input multiple class="form-control @error("images") is-invalid
                                                 @enderror" id="images" type="file" name="images" wire:model="images"
                                                 placeholder="Select images" />
@@ -219,24 +278,20 @@
                                 </div>
                                        @endif
 
-
-
-                                    <div class="form-group mt-2">
-                                        <label for="name">Short Video Link</label>
-                                        <input class="form-control @error("video") is-invalid @enderror" id="video"
-                                            type="url" name="video" wire:model.defer="video"
-                                            placeholder="Enter video" />
-                                        @error("video") <span class="text-danger px-3">{{ $message }} </span>
-                                        @enderror
-                                    </div>
-
-
+                                       <div class="form-file mt-2">
+                                        <label for="name">Short Video</label>
+                                            <input class="form-control @error("video") is-invalid
+                                                @enderror" id="video" type="file" name="video" wire:model="video"
+                                                placeholder="Select video" />
+                                                @error("video") <span class="text-danger px-3">{{ $message }} </span>
+                                                @enderror
+                                            </div>
                                 </div>
                             </div>
                             <h3 id="timer" class="text-danger text-center "></h3>
                             <div class="mt-1 mb-0">
                                 <div class="d-grid"><button class="btn btn-primary btn-block" type="submit"
-                                        id="btn">Submit</button></div>
+                                        id="btn"> <div class="spinner-border text-danger" wire:loading role="status"></div> Submit</button></div>
                             </div>
                         </form>
                     </div>

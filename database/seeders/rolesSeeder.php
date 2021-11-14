@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\agents;
 use App\Models\role;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;

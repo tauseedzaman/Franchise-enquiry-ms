@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\agents;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -34,6 +35,14 @@ class DatabaseSeeder extends Seeder
             StatusesTableSeeder::class,
             rolesSeeder::class,
         ]);
+        // for ($i=1; $i <= 8 ; $i++) {
+        //     agents::create([
+        //         'user_id' => 1,
+        //         "role_id" => $i,
+        //         'created_at' => $now,
+        //         'updated_at' => $now,
+        //     ]);
+        // }
         // \App\Models\User::factory(10)->create();
     }
 }

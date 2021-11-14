@@ -17,6 +17,7 @@ class CreateMyJobMattorsTable extends Migration
             $table->id();
             $table->string("title");
             $table->text("description");
+            $table->string("category")->nullable();
             $table->string("subcategory")->nullable();
             $table->string("location");
             $table->string("website");
@@ -24,8 +25,7 @@ class CreateMyJobMattorsTable extends Migration
             $table->string("phone");
             $table->string("whatsapp");
             $table->string("price");
-            $table->string("images");
-            $table->string("video")->nullable();
+            $table->foreignId("user_id")->nullable()->constrained();
             $table->timestamps();
         });
     }
