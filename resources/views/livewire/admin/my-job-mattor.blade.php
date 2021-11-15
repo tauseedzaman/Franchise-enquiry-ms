@@ -122,10 +122,11 @@
                             <p class="card-text"><b>WhatsApp: </b>{{ $this_post->whatsapp }}</p>
                             <p class="card-text"><b>Price (INR): </b>{{ $this_post->price }}</p>
                             <p class="card-text"><b>Images: </b>
+                                <br>
                                 @foreach ($this_post->files as $image)
                                    @if ($image->extension == "mp4")
                                    @else
-                                   <img src="{{ config('app.url').$image->path }}" />
+                                   <img class="col-6" src="{{ config('app.url').$image->path }}" />
                                    @endif
                                    @endforeach
                                 </p>
